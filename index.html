@@ -1,0 +1,162 @@
+<!doctype html>
+<html lang="de">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>StudyTasks – Dein smarter Studienplaner</title>
+    <meta name="description" content="StudyTasks: Der digitale To-Do-Manager für Studierende – organisiert, intelligent und teamorientiert. Behalte Deadlines, Gruppen und Projekte immer im Blick." />
+
+    <!-- Schrift -->
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- Stylesheet & Favicon -->
+    <link rel="stylesheet" href="Frontend/src/styles.css" />
+    <link rel="icon" href="Frontend/images/Logo.png" />
+</head>
+
+<body>
+    <!-- Header / Navigation -->
+    <header class="site-header">
+        <div class="container header-inner">
+            <a class="brand" href="index.html">
+                <img src="Frontend/images/Logo.png" alt="StudyTasks Logo" class="brand-logo" />
+            </a>
+
+            <nav class="nav">
+                <button class="nav-toggle" aria-expanded="false" aria-label="Menü öffnen">
+          <span class="bar"></span><span class="bar"></span><span class="bar"></span>
+        </button>
+                <ul class="nav-list">
+                    <li><a href="Frontend/site/features.html">Funktionen</a></li>
+                    <li><a href="Frontend/site/sofunktionierts.html">So funktioniert’s</a></li>
+                    <li><a href="Frontend/site/kontakt.html">Kontakt</a></li>
+                    <li><a href="Frontend/site/registrierung.html">Registrierung</a></li>
+                    <li><a href="Frontend/site/login.html">Login</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- HERO -->
+    <section class="hero" style="padding: 80px 0; background: linear-gradient(160deg, #f7f2ea 0%, #eef5f4 100%);">
+        <div class="container hero-inner" style="display: flex; flex-direction: column; align-items: center; text-align: center; max-width: 900px;">
+            <h1 style="font-size: clamp(32px, 4vw, 48px); font-weight: 700; margin-bottom: 12px;">Organisiere dein Studium mit Klarheit.
+            </h1>
+            <p class="lead" style="font-size: 18px; color: #5f6b6b; margin-bottom: 28px;">
+                StudyTasks vereint alles, was du für dein Studium brauchst – <strong>Aufgabenmanagement, Deadlines,
+          Gruppenkoordination</strong> und ein <strong>intelligentes Dashboard</strong> – übersichtlich, mobil und FH-freundlich.
+            </p>
+
+            <div class="cta" style="display: flex; gap: 14px; flex-wrap: wrap; justify-content: center;">
+                <a class="btn btn-primary" href="Frontend/site/registrierung.html">Kostenlos starten</a>
+                <a class="btn btn-ghost" href="Frontend/site/features.html">Alle Funktionen ansehen</a>
+            </div>
+
+            <ul class="pill-list" aria-label="Highlights" style="margin-top: 24px;">
+                <li>📅 Termine im Griff</li>
+                <li>🧠 Smarte Organisation</li>
+                <li>👥 Teamfähig</li>
+                <li>⏰ Automatische Erinnerungen</li>
+                <li>💻 Modern & intuitiv</li>
+            </ul>
+        </div>
+    </section>
+
+    <!-- Warum StudyTasks -->
+    <section class="section" style="background: white; padding: 64px 0;">
+        <div class="container" style="max-width: 1000px;">
+            <h2 style="text-align:center; font-size:2rem;">Warum StudyTasks?</h2>
+            <p class="muted" style="text-align:center; max-width:760px; margin: 12px auto 40px;">
+                StudyTasks wurde speziell für Studierende entwickelt, die im Alltag zwischen Projekten, Prüfungen und Gruppenarbeiten den Überblick behalten müssen. Mit Fokus auf <strong>Produktivität, Teamwork</strong> und
+                <strong>Benutzerfreundlichkeit</strong>.
+            </p>
+
+            <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 24px;">
+                <article class="feature" style="padding: 24px;">
+                    <h3>🎯 Klare Struktur</h3>
+                    <p>Alle Aufgaben, Projekte und Deadlines an einem Ort – intelligent sortiert und farblich gegliedert für maximalen Überblick.</p>
+                </article>
+                <article class="feature" style="padding: 24px;">
+                    <h3>🤝 Teamorientiert</h3>
+                    <p>Plane gemeinsam mit deinen Studienkollegen. Weise Aufgaben zu, verfolge Fortschritte und arbeite transparent im Team.</p>
+                </article>
+                <article class="feature" style="padding: 24px;">
+                    <h3>⚡ Intuitives Design</h3>
+                    <p>Keine komplizierten Menüs – StudyTasks ist klar, schnell und auf Studierende abgestimmt. Du findest alles, wo du es erwartest.</p>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <!-- Funktionsvorschau -->
+    <section id="features" class="section alt" style="padding: 64px 0;">
+        <div class="container">
+            <h2 style="text-align:center; font-size:2rem;">Leistungsstarke Funktionen</h2>
+            <p class="muted" style="text-align:center; max-width:750px; margin: 10px auto 40px;">
+                Von der Aufgabenplanung bis zur Teamübersicht – entdecke, wie StudyTasks deinen Studienalltag einfacher macht.
+            </p>
+
+            <div class="grid features-grid" style="margin-top: 24px;">
+                <article class="feature">
+                    <h3>🗂 Aufgabenmanagement</h3>
+                    <p>Organisiere deine To-Dos mit Fälligkeitsdatum, Priorität und Tags. Alles bleibt übersichtlich und synchronisiert.
+                    </p>
+                </article>
+                <article class="feature">
+                    <h3>📅 Kalenderintegration</h3>
+                    <p>Behalte alle Termine, Prüfungen und Abgaben zentral im Kalender. Automatische Erinnerungen sorgen für Pünktlichkeit.
+                    </p>
+                </article>
+                <article class="feature">
+                    <h3>👥 Gruppenplanung</h3>
+                    <p>Koordiniere Gruppenprojekte effizient: klare Aufgabenverteilung, Fortschrittsanzeige und Statusübersicht in Echtzeit.
+                    </p>
+                </article>
+                <article class="feature">
+                    <h3>📊 Dashboard</h3>
+                    <p>Sieh auf einen Blick, wie produktiv du bist: grafische Auswertungen, Wochenziele und Fortschrittsbalken.
+                    </p>
+                </article>
+            </div>
+
+            <div style="text-align:center; margin-top: 32px;">
+                <a href="Frontend/site/features.html" class="btn btn-primary">Mehr Funktionen entdecken</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Aufruf / CTA -->
+    <section class="section" style="padding: 72px 0; background: linear-gradient(160deg, #e6f3f0 0%, #f7f2ea 100%);">
+        <div class="container" style="text-align:center; max-width:800px;">
+            <h2 style="font-size:2rem; margin-bottom:16px;">Bereit, dein Studium neu zu organisieren?</h2>
+            <p class="muted" style="margin-bottom:28px;">Starte kostenlos, richte dein Dashboard ein und entdecke, wie einfach Studieren mit Struktur sein kann.</p>
+            <a href="Frontend/site/registrierung.html" class="btn btn-primary" style="padding: 14px 28px;">Jetzt kostenlos
+        starten</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="container footer-inner" style="flex-direction: column; text-align: center;">
+            <div class="brand-row" style="justify-content: center; margin-bottom: 8px;">
+                <img src="Frontend/images/Logo.png" alt="StudyTasks Logo" class="brand-logo small" />
+            </div>
+
+            <p class="muted" style="margin: 4px 0;">
+                © <span id="y"></span> StudyTasks – FH-freundlich, einfach, fokussiert.
+            </p>
+
+            <div class="footer-links" style="margin-top: 6px;">
+                <a href="Frontend/site/hilfe.html" class="footer-link">Hilfe</a> |
+                <a href="Frontend/site/impressum.html" class="footer-link">Impressum</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Script -->
+    <script src="Frontend/src/app.js"></script>
+</body>
+
+</html>
