@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="de">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Login – StudyTasks</title>
+    <meta name="description" content="Login zu deinem StudyTasks-Konto – greif auf deine Aufgaben, Deadlines und Projekte zu." />
+
+    <!-- Schrift & Styles -->
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../src/styles.css" />
+    <link rel="icon" href="../images/Logo.png" />
+</head>
+
+<body>
+    <!-- Header -->
+    <header class="site-header">
+        <div class="container header-inner">
+            <a class="brand" href="../../index.html">
+                <img src="../images/Logo.png" alt="StudyTasks Logo" class="brand-logo" />
+            </a>
+
+            <nav class="nav">
+                <ul class="nav-list">
+                    <li><a href="features.html">Funktionen</a></li>
+                    <li><a href="sofunktionierts.html">So funktioniert’s</a></li>
+                    <li><a href="kontakt.html">Kontakt</a></li>
+                    <li><a href="registrierung.html">Registrierung</a></li>
+                    <li><a href="login.html" class="active">Login</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hauptinhalt -->
+    <main class="section">
+        <div class="container demo-card" style="max-width:500px; text-align:center;">
+            <h2>Login</h2>
+            <p class="muted" style="margin-bottom: 20px;">
+                Melde dich mit deiner <strong>FH Technikum Wien E-Mail-Adresse</strong> oder deinem
+                <strong>Benutzernamen</strong> an, um auf dein StudyTasks-Konto zuzugreifen.
+            </p>
+
+            <form class="form" style="display: flex; flex-direction: column; gap: 14px; margin-top: 16px;">
+                <!-- Benutzername oder E-Mail -->
+                <label for="loginId">E-Mail-Adresse oder FH-Benutzername</label>
+                <input type="text" id="loginId" placeholder="z. B. mustermann01 oder name@technikum-wien.at" disabled style="padding: 10px; border: 1px solid #ccc; border-radius: 10px; font-size: 15px;" />
+
+                <!-- Passwort -->
+                <label for="password">Passwort</label>
+                <input type="password" id="password" placeholder="********" disabled style="padding: 10px; border: 1px solid #ccc; border-radius: 10px; font-size: 15px;" />
+
+                <!-- Passwort vergessen -->
+                <p class="muted" style="font-size: 14px; text-align: left; margin-top: 4px;">
+                    Passwort vergessen? <a href="kontakt.html" class="footer-link">Kontaktiere uns</a>, um dein Passwort zurückzusetzen.
+                </p>
+
+                <!-- Button -->
+                <button class="btn btn-primary" disabled>Einloggen</button>
+            </form>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="container footer-inner" style="flex-direction: column; text-align: center;">
+            <div class="brand-row" style="justify-content: center; margin-bottom: 8px;">
+                <img src="../images/Logo.png" alt="StudyTasks Logo" class="brand-logo small" />
+            </div>
+
+            <p class="muted" style="margin: 4px 0;">
+                © <span id="y"></span> StudyTasks – FH-freundlich, einfach, fokussiert.
+            </p>
+
+            <div class="footer-links" style="margin-top: 6px;">
+                <a href="hilfe.html" class="footer-link">Hilfe</a> |
+                <a href="impressum.html" class="footer-link">Impressum</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Script -->
+    <script src="../src/app.js"></script>
+</body>
+
+</html>
