@@ -1,0 +1,104 @@
+<!doctype html>
+<html lang="de">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Registrierung – StudyTasks</title>
+    <meta name="description" content="Erstelle dein StudyTasks-Konto, um deine Studienaufgaben einfach zu managen." />
+
+    <!-- Schrift & Styles -->
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../src/styles.css" />
+    <link rel="icon" href="../images/Logo.png" />
+</head>
+
+<body>
+    <!-- Header -->
+    <header class="site-header">
+        <div class="container header-inner">
+            <a class="brand" href="../../index.html">
+                <img src="../images/Logo.png" alt="StudyTasks Logo" class="brand-logo" />
+            </a>
+
+            <nav class="nav">
+                <ul class="nav-list">
+                    <li><a href="features.html">Funktionen</a></li>
+                    <li><a href="sofunktionierts.html">So funktioniert’s</a></li>
+                    <li><a href="kontakt.html">Kontakt</a></li>
+                    <li><a href="registrierung.html" class="active">Registrierung</a></li>
+                    <li><a href="login.html">Login</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hauptinhalt -->
+    <main class="section">
+        <div class="container demo-card" style="max-width:600px; text-align:center;">
+            <h2>Registrierung</h2>
+            <p class="muted">
+                Erstelle dein persönliches StudyTasks-Konto, um deine Aufgaben, Deadlines und Projekte einfach und übersichtlich zu organisieren.
+            </p>
+
+            <form class="form" style="display: flex; flex-direction: column; gap: 14px; margin-top: 20px;">
+                <!-- Name -->
+                <label for="name">Vollständiger Name</label>
+                <input type="text" id="name" placeholder="Max Mustermann" disabled style="padding: 10px; border: 1px solid #ccc; border-radius: 10px; font-size: 15px;" />
+
+                <!-- Matrikelnummer -->
+                <label for="matrikelnummer">Matrikelnummer (FH Technikum Wien)</label>
+                <input type="text" id="matrikelnummer" placeholder="z. B. 12345678" disabled style="padding: 10px; border: 1px solid #ccc; border-radius: 10px; font-size: 15px;" />
+
+                <!-- Benutzername -->
+                <label for="username">FH-Benutzername</label>
+                <input type="text" id="username" placeholder="z. B. wi00b000" disabled style="padding: 10px; border: 1px solid #ccc; border-radius: 10px; font-size: 15px;" />
+
+                <!-- E-Mail -->
+                <label for="email">E-Mail-Adresse</label>
+                <input type="email" id="email" placeholder="wi00b000@technikum-wien.at" disabled style="padding: 10px; border: 1px solid #ccc; border-radius: 10px; font-size: 15px;" />
+
+                <!-- Passwort -->
+                <label for="password">Passwort</label>
+                <input type="password" id="password" placeholder="********" disabled style="padding: 10px; border: 1px solid #ccc; border-radius: 10px; font-size: 15px;" />
+
+                <!-- Passwort bestätigen -->
+                <label for="passwordConfirm">Passwort bestätigen</label>
+                <input type="password" id="passwordConfirm" placeholder="********" disabled style="padding: 10px; border: 1px solid #ccc; border-radius: 10px; font-size: 15px;" />
+
+                <!-- Hinweis -->
+                <p class="muted" style="font-size: 14px; margin-top: 4px;">
+                    Mit der Registrierung bestätigst du, dass du Student:in an der
+                    <strong>FH Technikum Wien</strong> bist. Derzeit ist eine Registrierung nur für FH-Accounts möglich.
+                </p>
+
+                <!-- Button -->
+                <button class="btn btn-primary" disabled>Registrieren</button>
+            </form>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="container footer-inner" style="flex-direction: column; text-align: center;">
+            <div class="brand-row" style="justify-content: center; margin-bottom: 8px;">
+                <img src="../images/Logo.png" alt="StudyTasks Logo" class="brand-logo small" />
+            </div>
+
+            <p class="muted" style="margin: 4px 0;">
+                © <span id="y"></span> StudyTasks – FH-freundlich, einfach, fokussiert.
+            </p>
+
+            <div class="footer-links" style="margin-top: 6px;">
+                <a href="hilfe.html" class="footer-link">Hilfe</a> |
+                <a href="impressum.html" class="footer-link">Impressum</a>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Script -->
+    <script src="../src/app.js"></script>
+</body>
+
+</html>
