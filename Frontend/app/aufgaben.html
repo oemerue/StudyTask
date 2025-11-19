@@ -1,0 +1,126 @@
+<!doctype html>
+<html lang="de">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Aufgaben – StudyTasks</title>
+    <meta name="description" content="Verwalte deine Studienaufgaben in StudyTasks – erstellen, bearbeiten, erledigen und priorisieren." />
+
+    <!-- Schrift & Styles -->
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../src/styles.css" />
+    <link rel="icon" href="../images/Logo.png" />
+</head>
+
+<body>
+    <!-- Header -->
+    <header class="site-header">
+        <div class="container header-inner">
+            <a class="brand" href="dashboard.html">
+                <img src="../images/Logo.png" alt="StudyTasks Logo" class="brand-logo" />
+            </a>
+
+            <nav class="nav">
+                <ul class="nav-list">
+                    <li><a href="dashboard.html">Dashboard</a></li>
+                    <li><a href="aufgaben.html" class="active">Aufgaben</a></li>
+                    <li><a href="kalender.html">Kalender</a></li>
+                    <li><a href="gruppen.html">Gruppen</a></li>
+                    <li><a href="profil.html">Profil</a></li>
+                    <li><a href="logout.html">Logout</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hauptinhalt -->
+    <main class="section">
+        <div class="container" style="max-width: 950px;">
+            <h1 style="text-align:center; font-size:2rem;">Meine Aufgaben</h1>
+            <p class="muted" style="text-align:center; margin-bottom: 30px;">
+                Behalte deine Studienaufgaben im Blick. Filtere, bearbeite oder markiere sie als erledigt.
+            </p>
+
+            <!-- Filterbereich -->
+            <div class="feature" style="padding: 20px; margin-bottom: 24px;">
+                <form style="display: flex; flex-wrap: wrap; gap: 10px; justify-content: center;">
+                    <select style="padding: 10px; border: 1px solid #ccc; border-radius: 10px; font-size: 15px;">
+            <option>Alle Aufgaben</option>
+            <option>Offen</option>
+            <option>In Bearbeitung</option>
+            <option>Erledigt</option>
+          </select>
+
+                    <select style="padding: 10px; border: 1px solid #ccc; border-radius: 10px; font-size: 15px;">
+            <option>Alle Fächer</option>
+            <option>#Mathe</option>
+            <option>#SoftwareEngineering</option>
+            <option>#Datenbanken</option>
+          </select>
+
+                    <input type="search" placeholder="Suche nach Aufgaben..." style="padding: 10px; border: 1px solid #ccc; border-radius: 10px; flex: 1; min-width: 220px;" disabled />
+
+                    <button class="btn btn-primary" disabled>Filter anwenden</button>
+                </form>
+            </div>
+
+            <!-- Aufgabenliste -->
+            <div class="grid" style="gap: 16px;">
+                <article class="feature" style="border-left: 5px solid var(--brand); padding: 16px;">
+                    <h3>📘 Mathe Übungsblatt 4</h3>
+                    <p class="muted">Fällig: 22. Okt 2025 • Status: <strong>Offen</strong></p>
+                    <p style="margin-top:8px;">Löse Aufgaben 3–6 im Kapitel 5. Ergebnisse hochladen im Moodle.</p>
+                    <div style="margin-top: 10px; display:flex; gap:8px;">
+                        <button class="btn btn-primary" disabled>Als erledigt markieren</button>
+                        <button class="btn btn-ghost" disabled>Bearbeiten</button>
+                    </div>
+                </article>
+
+                <article class="feature" style="border-left: 5px solid #d98e04; padding: 16px;">
+                    <h3>💻 SE-Projekt – Designphase</h3>
+                    <p class="muted">Fällig: 28. Okt 2025 • Status: <strong>In Bearbeitung</strong></p>
+                    <p style="margin-top:8px;">Arbeite am UI-Design für die App. Präsentation vorbereiten.</p>
+                    <div style="margin-top: 10px; display:flex; gap:8px;">
+                        <button class="btn btn-primary" disabled>Als erledigt markieren</button>
+                        <button class="btn btn-ghost" disabled>Bearbeiten</button>
+                    </div>
+                </article>
+
+                <article class="feature" style="border-left: 5px solid #2d7f74; padding: 16px; opacity: 0.7;">
+                    <h3>🧠 Datenbanken Test</h3>
+                    <p class="muted">Fällig: 30. Okt 2025 • Status: <strong>Erledigt</strong></p>
+                    <p style="margin-top:8px;">Kapitel 4–6 wiederholen und Testfragen aus Moodle lösen.</p>
+                    <div style="margin-top: 10px; display:flex; gap:8px;">
+                        <button class="btn btn-primary" disabled>Erledigt</button>
+                        <button class="btn btn-ghost" disabled>Bearbeiten</button>
+                    </div>
+                </article>
+            </div>
+
+            <!-- CTA -->
+            <div style="text-align:center; margin-top: 40px;">
+                <button class="btn btn-primary" disabled>+ Neue Aufgabe erstellen</button>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="container footer-inner">
+            <div class="brand-row">
+                <img src="../images/Logo.png" alt="StudyTasks Logo" class="brand-logo small" />
+            </div>
+            <p class="muted">© <span id="y"></span> StudyTasks. FH-freundlich, einfach, fokussiert.</p>
+        </div>
+    </footer>
+
+    <!-- Script -->
+    <script>
+        // Jahr im Footer automatisch setzen
+        document.getElementById("y").textContent = new Date().getFullYear();
+    </script>
+</body>
+
+</html>

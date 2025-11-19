@@ -1,0 +1,121 @@
+<!doctype html>
+<html lang="de">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Dashboard – StudyTasks</title>
+    <meta name="description" content="Dein persönliches StudyTasks-Dashboard: Behalte Aufgaben, Deadlines und Fortschritte im Blick." />
+
+    <!-- Schrift & Styles -->
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../src/styles.css" />
+    <link rel="icon" href="../images/Logo.png" />
+</head>
+
+<body>
+    <!-- Header -->
+    <header class="site-header">
+        <div class="container header-inner">
+            <a class="brand" href="dashboard.html">
+                <img src="../images/Logo.png" alt="StudyTasks Logo" class="brand-logo" />
+            </a>
+
+            <nav class="nav">
+                <ul class="nav-list">
+                    <li><a href="dashboard.html" class="active">Dashboard</a></li>
+                    <li><a href="aufgaben.html">Aufgaben</a></li>
+                    <li><a href="kalender.html">Kalender</a></li>
+                    <li><a href="gruppen.html">Gruppen</a></li>
+                    <li><a href="profil.html">Profil</a></li>
+                    <li><a href="logout.html">Logout</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hauptinhalt -->
+    <main class="section">
+        <div class="container">
+            <h1 style="text-align:center; font-size:2rem;">Willkommen zurück, <span id="userName">Student</span> 👋</h1>
+            <p class="muted" style="text-align:center; max-width:800px; margin-inline:auto;">
+                Hier ist dein persönliches Dashboard – alle wichtigen Informationen auf einen Blick.
+            </p>
+
+            <!-- Statistik-Karten -->
+            <div class="grid" style="margin-top: 40px; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 24px;">
+                <article class="feature" style="text-align:center; padding: 20px;">
+                    <h3>📋 Offene Aufgaben</h3>
+                    <p style="font-size: 22px; font-weight: 700; color: var(--brand);">5</p>
+                    <p class="muted">Noch zu erledigen</p>
+                </article>
+
+                <article class="feature" style="text-align:center; padding: 20px;">
+                    <h3>✅ Erledigte Aufgaben</h3>
+                    <p style="font-size: 22px; font-weight: 700; color: #2d7f74;">12</p>
+                    <p class="muted">Diese Woche abgeschlossen</p>
+                </article>
+
+                <article class="feature" style="text-align:center; padding: 20px;">
+                    <h3>⏰ Nächste Deadline</h3>
+                    <p style="font-size: 22px; font-weight: 700; color: #d98e04;">20. Okt 2025</p>
+                    <p class="muted">Projektbericht „SE-Gruppe“</p>
+                </article>
+
+                <article class="feature" style="text-align:center; padding: 20px;">
+                    <h3>📈 Fortschritt</h3>
+                    <div class="progress" style="margin-top: 8px;"><span style="width: 68%;"></span></div>
+                    <p class="muted" style="margin-top: 6px;">68% erledigt</p>
+                </article>
+            </div>
+
+            <!-- Nächste Deadlines -->
+            <section style="margin-top: 56px;">
+                <h2 style="font-size:1.5rem; margin-bottom: 14px;">📅 Nächste Deadlines</h2>
+                <div class="grid" style="gap: 14px;">
+                    <article class="feature">
+                        <h3>Mathe Übungsblatt 4</h3>
+                        <p class="muted">Fällig am <strong>22. Okt 2025</strong></p>
+                    </article>
+                    <article class="feature">
+                        <h3>Software Engineering – Projektabgabe</h3>
+                        <p class="muted">Fällig am <strong>28. Okt 2025</strong></p>
+                    </article>
+                    <article class="feature">
+                        <h3>Datenbanken Test</h3>
+                        <p class="muted">Fällig am <strong>30. Okt 2025</strong></p>
+                    </article>
+                </div>
+            </section>
+
+            <!-- CTA -->
+            <div style="text-align:center; margin-top: 40px;">
+                <a href="aufgaben.html" class="btn btn-primary">Zu meinen Aufgaben</a>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="container footer-inner">
+            <div class="brand-row">
+                <img src="../images/Logo.png" alt="StudyTasks Logo" class="brand-logo small" />
+            </div>
+            <p class="muted">
+                © <span id="y"></span> StudyTasks. FH-freundlich, einfach, fokussiert.
+            </p>
+        </div>
+    </footer>
+
+    <!-- Script -->
+    <script>
+        // Platzhalter für zukünftigen Nutzernamen (später dynamisch aus Login übernehmen)
+        document.getElementById("userName").textContent = "Serdar"; // oder aus SessionStorage
+
+        // Jahr im Footer
+        document.getElementById("y").textContent = new Date().getFullYear();
+    </script>
+</body>
+
+</html>
