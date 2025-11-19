@@ -1,0 +1,173 @@
+<!doctype html>
+<html lang="de">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Kalender – StudyTasks</title>
+    <meta name="description" content="Behalte deine Deadlines und Studienereignisse im Kalender von StudyTasks im Blick." />
+
+    <!-- Schrift & Styles -->
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../src/styles.css" />
+    <link rel="icon" href="../images/Logo.png" />
+</head>
+
+<body>
+    <!-- Header -->
+    <header class="site-header">
+        <div class="container header-inner">
+            <a class="brand" href="dashboard.html">
+                <img src="../images/Logo.png" alt="StudyTasks Logo" class="brand-logo" />
+            </a>
+
+            <nav class="nav">
+                <ul class="nav-list">
+                    <li><a href="dashboard.html">Dashboard</a></li>
+                    <li><a href="aufgaben.html">Aufgaben</a></li>
+                    <li><a href="kalender.html" class="active">Kalender</a></li>
+                    <li><a href="gruppen.html">Gruppen</a></li>
+                    <li><a href="profil.html">Profil</a></li>
+                    <li><a href="logout.html">Logout</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hauptinhalt -->
+    <main class="section">
+        <div class="container" style="max-width: 950px;">
+            <h1 style="text-align:center; font-size:2rem;">Mein Kalender</h1>
+            <p class="muted" style="text-align:center; margin-bottom: 30px;">
+                Hier findest du alle wichtigen Termine, Abgaben und Deadlines im Überblick.
+            </p>
+
+            <!-- Monatsübersicht -->
+            <section class="feature" style="padding: 24px;">
+                <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px;">
+                    <h2 style="margin:0;">📆 Oktober 2025</h2>
+                    <div style="display:flex; gap:8px;">
+                        <button class="btn btn-ghost" disabled>&lt; Vorheriger Monat</button>
+                        <button class="btn btn-ghost" disabled>Nächster Monat &gt;</button>
+                    </div>
+                </div>
+
+                <!-- Kalendergitter -->
+                <div style="
+          display: grid;
+          grid-template-columns: repeat(7, 1fr);
+          gap: 6px;
+          margin-top: 20px;
+          text-align:center;
+        ">
+                    <!-- Wochentage -->
+                    <div><strong>Mo</strong></div>
+                    <div><strong>Di</strong></div>
+                    <div><strong>Mi</strong></div>
+                    <div><strong>Do</strong></div>
+                    <div><strong>Fr</strong></div>
+                    <div><strong>Sa</strong></div>
+                    <div><strong>So</strong></div>
+
+                    <!-- Beispielhafte Tage -->
+                    <!-- Leere Kästchen für den Monatsanfang -->
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div></div>
+                    <div>1</div>
+                    <div>2</div>
+                    <div>3</div>
+
+                    <!-- Kalender-Tage -->
+                    <div class="day-cell">4</div>
+                    <div class="day-cell">5</div>
+                    <div class="day-cell highlight" title="Mathe Übungsblatt 4">6</div>
+                    <div class="day-cell">7</div>
+                    <div class="day-cell">8</div>
+                    <div class="day-cell weekend">9</div>
+                    <div class="day-cell weekend">10</div>
+
+                    <div class="day-cell">11</div>
+                    <div class="day-cell">12</div>
+                    <div class="day-cell highlight" title="SE-Projekt Präsentation">13</div>
+                    <div class="day-cell">14</div>
+                    <div class="day-cell">15</div>
+                    <div class="day-cell weekend">16</div>
+                    <div class="day-cell weekend">17</div>
+
+                    <div class="day-cell highlight" title="DB-Test">18</div>
+                    <div class="day-cell">19</div>
+                    <div class="day-cell">20</div>
+                    <div class="day-cell">21</div>
+                    <div class="day-cell">22</div>
+                    <div class="day-cell weekend">23</div>
+                    <div class="day-cell weekend">24</div>
+
+                    <div class="day-cell">25</div>
+                    <div class="day-cell">26</div>
+                    <div class="day-cell">27</div>
+                    <div class="day-cell highlight" title="Abgabe Projektbericht">28</div>
+                    <div class="day-cell">29</div>
+                    <div class="day-cell weekend">30</div>
+                    <div class="day-cell weekend">31</div>
+                </div>
+            </section>
+
+            <!-- Legende -->
+            <div style="margin-top:30px; text-align:center;">
+                <p class="muted">📘 Mathe | 💻 SE-Projekt | 🧠 Datenbanken</p>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="container footer-inner">
+            <div class="brand-row">
+                <img src="../images/Logo.png" alt="StudyTasks Logo" class="brand-logo small" />
+            </div>
+            <p class="muted">© <span id="y"></span> StudyTasks. FH-freundlich, einfach, fokussiert.</p>
+        </div>
+    </footer>
+
+    <!-- Script -->
+    <script>
+        // Jahr im Footer automatisch setzen
+        document.getElementById("y").textContent = new Date().getFullYear();
+    </script>
+
+    <!-- Inline Style für Kalender -->
+    <style>
+        .day-cell {
+            border: 1px solid #ddd;
+            padding: 10px;
+            border-radius: 8px;
+            min-height: 60px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 15px;
+        }
+        
+        .day-cell.weekend {
+            background-color: #f9f9f9;
+            color: #888;
+        }
+        
+        .day-cell.highlight {
+            background-color: #e8f5f3;
+            border-color: var(--brand);
+            font-weight: 600;
+            color: #2d7f74;
+            cursor: pointer;
+        }
+        
+        .day-cell.highlight:hover {
+            background-color: #d9efeb;
+        }
+    </style>
+</body>
+
+</html>

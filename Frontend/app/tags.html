@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="de">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Tags & Filter – StudyTasks</title>
+    <meta name="description" content="Organisiere deine Aufgaben mit Tags: Filtern nach Fach, Projekt oder Thema – bleib fokussiert mit StudyTasks." />
+
+    <!-- Schrift & Styles -->
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../src/styles.css" />
+    <link rel="icon" href="../images/Logo.png" />
+</head>
+
+<body>
+    <!-- Header -->
+    <header class="site-header">
+        <div class="container header-inner">
+            <a class="brand" href="dashboard.html">
+                <img src="../images/Logo.png" alt="StudyTasks Logo" class="brand-logo" />
+            </a>
+
+            <nav class="nav">
+                <ul class="nav-list">
+                    <li><a href="dashboard.html">Dashboard</a></li>
+                    <li><a href="aufgaben.html">Aufgaben</a></li>
+                    <li><a href="kalender.html">Kalender</a></li>
+                    <li><a href="gruppen.html">Gruppen</a></li>
+                    <li><a href="tags.html" class="active">Tags</a></li>
+                    <li><a href="profil.html">Profil</a></li>
+                    <li><a href="logout.html">Logout</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hauptinhalt -->
+    <main class="section">
+        <div class="container" style="max-width: 950px;">
+            <h1 style="text-align:center; font-size:2rem;">Tags & Filter</h1>
+            <p class="muted" style="text-align:center; margin-bottom: 30px;">
+                Organisiere deine Aufgaben mit Tags – für jedes Fach, Projekt oder Thema. So behältst du Ordnung und Fokus.
+            </p>
+
+            <!-- Tag-Filter Auswahl -->
+            <div class="feature" style="padding: 20px; margin-bottom: 28px;">
+                <form style="display: flex; flex-wrap: wrap; gap: 10px; justify-content: center;">
+                    <input type="search" placeholder="Nach Tags suchen ..." style="padding: 10px; border: 1px solid #ccc; border-radius: 10px; flex: 1; min-width: 220px;" disabled />
+                    <button class="btn btn-primary" disabled>Filter anwenden</button>
+                </form>
+            </div>
+
+            <!-- Tag-Übersicht -->
+            <div class="grid" style="gap: 24px;">
+
+                <!-- Tag Mathe -->
+                <article class="feature" style="border-left: 5px solid var(--brand); padding: 20px;">
+                    <h2>#Mathe</h2>
+                    <p class="muted">4 Aufgaben • 2 erledigt</p>
+                    <div class="progress" style="margin-top: 8px;">
+                        <span style="width: 50%;"></span>
+                    </div>
+                    <p class="muted" style="margin-top: 4px;">50% abgeschlossen</p>
+                    <div style="margin-top: 12px;">
+                        <button class="btn btn-primary" disabled>Aufgaben anzeigen</button>
+                    </div>
+                </article>
+
+                <!-- Tag Projektarbeit -->
+                <article class="feature" style="border-left: 5px solid #2d7f74; padding: 20px;">
+                    <h2>#Projektarbeit</h2>
+                    <p class="muted">6 Aufgaben • 4 erledigt</p>
+                    <div class="progress" style="margin-top: 8px;">
+                        <span style="width: 67%;"></span>
+                    </div>
+                    <p class="muted" style="margin-top: 4px;">67% abgeschlossen</p>
+                    <div style="margin-top: 12px;">
+                        <button class="btn btn-primary" disabled>Aufgaben anzeigen</button>
+                    </div>
+                </article>
+
+                <!-- Tag FH-Technikum -->
+                <article class="feature" style="border-left: 5px solid #d98e04; padding: 20px;">
+                    <h2>#FH-Technikum</h2>
+                    <p class="muted">3 Aufgaben • 1 erledigt</p>
+                    <div class="progress" style="margin-top: 8px;">
+                        <span style="width: 33%;"></span>
+                    </div>
+                    <p class="muted" style="margin-top: 4px;">33% abgeschlossen</p>
+                    <div style="margin-top: 12px;">
+                        <button class="btn btn-primary" disabled>Aufgaben anzeigen</button>
+                    </div>
+                </article>
+
+                <!-- Tag Präsentation -->
+                <article class="feature" style="border-left: 5px solid #b76db7; padding: 20px;">
+                    <h2>#Präsentation</h2>
+                    <p class="muted">2 Aufgaben • 1 erledigt</p>
+                    <div class="progress" style="margin-top: 8px;">
+                        <span style="width: 50%;"></span>
+                    </div>
+                    <p class="muted" style="margin-top: 4px;">50% abgeschlossen</p>
+                    <div style="margin-top: 12px;">
+                        <button class="btn btn-primary" disabled>Aufgaben anzeigen</button>
+                    </div>
+                </article>
+            </div>
+
+            <!-- CTA -->
+            <div style="text-align:center; margin-top: 40px;">
+                <button class="btn btn-primary" disabled>+ Neuen Tag hinzufügen</button>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="container footer-inner">
+            <div class="brand-row">
+                <img src="../images/Logo.png" alt="StudyTasks Logo" class="brand-logo small" />
+            </div>
+            <p class="muted">
+                © <span id="y"></span> StudyTasks. FH-freundlich, einfach, fokussiert.
+            </p>
+        </div>
+    </footer>
+
+    <!-- Script -->
+    <script>
+        document.getElementById("y").textContent = new Date().getFullYear();
+    </script>
+</body>
+
+</html>
