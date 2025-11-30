@@ -15,89 +15,85 @@
 </head>
 
 <body>
-    <!-- Header -->
-    <header class="site-header">
-        <div class="container header-inner">
-            <a class="brand" href="dashboard.html">
-                <img src="../images/Logo.png" alt="StudyTasks Logo" class="brand-logo" />
-            </a>
+<header class="site-header">
+    <div class="container header-inner">
+        <a class="brand" href="dashboard.html">
+            <img src="../images/Logo.png" alt="StudyTasks Logo" class="brand-logo" />
+        </a>
 
-            <nav class="nav">
-                <ul class="nav-list">
-                    <li><a href="dashboard.html">Dashboard</a></li>
-                    <li><a href="aufgaben.html">Aufgaben</a></li>
-                    <li><a href="kalender.html">Kalender</a></li>
-                    <li><a href="gruppen.html">Gruppen</a></li>
-                    <li><a href="tags.html">Tags</a></li>
-                    <li><a href="statistik.html">Statistik</a></li>
-                    <li><a href="profil.html" class="active">Profil</a></li>
-                    <li><a href="logout.html">Logout</a></li>
-                </ul>
-            </nav>
+        <nav class="nav">
+            <ul class="nav-list">
+                <li><a href="../app/dashboard.html">Dashboard</a></li>
+                <li><a href="../app/aufgaben.html">Aufgaben</a></li>
+                <li><a href="../app/kalender.html">Kalender</a></li>
+                <li><a href="../app/gruppen.html">Gruppen</a></li>
+                <li><a href="../app/tags.html">Tags</a></li>
+                <li><a href="../app/statistik.html">Statistik</a></li>
+                <li><a href="../app/profil.html" class="active">Profil</a></li>
+                <li><a href="../app/logout.html">Logout</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<main class="section">
+    <div class="container profile-page-container">
+        <h1 class="page-title">Mein Profil</h1>
+        <p class="muted page-subtitle-lg">
+            Verwalte deine persönlichen Daten und dein StudyTasks-Konto.
+        </p>
+
+        <!-- Profilübersicht -->
+        <section class="feature profile-card">
+            <img src="../images/Logo.png" alt="Profilbild" class="profile-avatar" />
+            <h2>Serdar Toluay</h2>
+            <p class="muted">FH Technikum Wien – Wirtschaftsinformatik</p>
+        </section>
+
+        <!-- Profildaten -->
+        <form class="form form-stacked profile-form">
+            <label for="name">Vollständiger Name</label>
+            <input type="text" id="name" value="Serdar Toluay" class="input-standard" />
+
+            <label for="matrikelnummer">Matrikelnummer</label>
+            <input type="text" id="matrikelnummer" value="12345678" class="input-standard" />
+
+            <label for="username">FH-Benutzername</label>
+            <input type="text" id="username" value="wi00b000" class="input-standard" />
+
+            <label for="email">E-Mail-Adresse</label>
+            <input type="email" id="email" value="wi00b000@technikum-wien.at" class="input-standard" />
+
+            <label for="password">Passwort ändern</label>
+            <input type="password" id="password" placeholder="Neues Passwort eingeben" class="input-standard" />
+
+            <label for="passwordConfirm">Passwort bestätigen</label>
+            <input type="password" id="passwordConfirm" placeholder="Neues Passwort bestätigen" class="input-standard" />
+
+            <button class="btn btn-primary">Änderungen speichern</button>
+        </form>
+
+        <!-- Kontoabschnitt -->
+        <section class="account-section">
+            <h2>Konto verwalten</h2>
+            <p class="muted">Hier kannst du dein Konto bei Bedarf deaktivieren oder löschen.</p>
+            <button class="btn btn-ghost" disabled>Konto löschen</button>
+        </section>
+    </div>
+</main>
+
+<footer class="site-footer">
+    <div class="container footer-inner">
+        <div class="brand-row">
+            <img src="../images/Logo.png" alt="StudyTasks Logo" class="brand-logo small" />
         </div>
-    </header>
+        <p class="muted">© <span id="y"></span> StudyTasks. FH-freundlich, einfach, fokussiert.</p>
+    </div>
+</footer>
 
-    <!-- Hauptinhalt -->
-    <main class="section">
-        <div class="container" style="max-width: 800px;">
-            <h1 style="text-align:center; font-size:2rem;">Mein Profil</h1>
-            <p class="muted" style="text-align:center; margin-bottom: 40px;">
-                Verwalte deine persönlichen Daten und dein StudyTasks-Konto.
-            </p>
-
-            <!-- Profilübersicht -->
-            <section class="feature" style="padding: 24px; text-align:center;">
-                <img src="../images/Logo.png" alt="Profilbild" style="width:100px; height:100px; border-radius:50%; margin-bottom:16px;" />
-                <h2>Serdar Toluay</h2>
-                <p class="muted">FH Technikum Wien – Wirtschaftsinformatik</p>
-            </section>
-
-            <!-- Profildaten -->
-            <form class="form" style="margin-top: 30px; display: flex; flex-direction: column; gap: 14px;">
-                <label for="name">Vollständiger Name</label>
-                <input type="text" id="name" value="Serdar Toluay" disabled style="padding: 10px; border: 1px solid #ccc; border-radius: 10px; font-size: 15px;" />
-
-                <label for="matrikelnummer">Matrikelnummer</label>
-                <input type="text" id="matrikelnummer" value="12345678" disabled style="padding: 10px; border: 1px solid #ccc; border-radius: 10px; font-size: 15px;" />
-
-                <label for="username">FH-Benutzername</label>
-                <input type="text" id="username" value="wi00b000" disabled style="padding: 10px; border: 1px solid #ccc; border-radius: 10px; font-size: 15px;" />
-
-                <label for="email">E-Mail-Adresse</label>
-                <input type="email" id="email" value="wi00b000@technikum-wien.at" disabled style="padding: 10px; border: 1px solid #ccc; border-radius: 10px; font-size: 15px;" />
-
-                <label for="password">Passwort ändern</label>
-                <input type="password" id="password" placeholder="Neues Passwort eingeben" disabled style="padding: 10px; border: 1px solid #ccc; border-radius: 10px; font-size: 15px;" />
-
-                <label for="passwordConfirm">Passwort bestätigen</label>
-                <input type="password" id="passwordConfirm" placeholder="Neues Passwort bestätigen" disabled style="padding: 10px; border: 1px solid #ccc; border-radius: 10px; font-size: 15px;" />
-
-                <button class="btn btn-primary" disabled>Änderungen speichern</button>
-            </form>
-
-            <!-- Kontoabschnitt -->
-            <section style="margin-top: 50px; text-align:center;">
-                <h2>Konto verwalten</h2>
-                <p class="muted" style="margin-bottom: 20px;">Hier kannst du dein Konto bei Bedarf deaktivieren oder löschen.</p>
-                <button class="btn btn-ghost" disabled>Konto löschen</button>
-            </section>
-        </div>
-    </main>
-
-    <!-- Footer -->
-    <footer class="site-footer">
-        <div class="container footer-inner">
-            <div class="brand-row">
-                <img src="../images/Logo.png" alt="StudyTasks Logo" class="brand-logo small" />
-            </div>
-            <p class="muted">© <span id="y"></span> StudyTasks. FH-freundlich, einfach, fokussiert.</p>
-        </div>
-    </footer>
-
-    <!-- Script -->
-    <script>
-        document.getElementById("y").textContent = new Date().getFullYear();
-    </script>
+<script>
+    document.getElementById("y").textContent = new Date().getFullYear();
+</script>
 </body>
 
 </html>

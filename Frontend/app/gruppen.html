@@ -15,123 +15,112 @@
 </head>
 
 <body>
-    <!-- Header -->
-    <header class="site-header">
-        <div class="container header-inner">
-            <a class="brand" href="dashboard.html">
-                <img src="../images/Logo.png" alt="StudyTasks Logo" class="brand-logo" />
-            </a>
+<header class="site-header">
+    <div class="container header-inner">
+        <a class="brand" href="dashboard.html">
+            <img src="../images/Logo.png" alt="StudyTasks Logo" class="brand-logo" />
+        </a>
 
-            <nav class="nav">
-                <ul class="nav-list">
-                    <li><a href="dashboard.html">Dashboard</a></li>
-                    <li><a href="aufgaben.html">Aufgaben</a></li>
-                    <li><a href="kalender.html">Kalender</a></li>
-                    <li><a href="gruppen.html" class="active">Gruppen</a></li>
-                    <li><a href="profil.html">Profil</a></li>
-                    <li><a href="logout.html">Logout</a></li>
-                </ul>
-            </nav>
+        <nav class="nav">
+            <ul class="nav-list">
+                <li><a href="dashboard.html">Dashboard</a></li>
+                <li><a href="aufgaben.html">Aufgaben</a></li>
+                <li><a href="kalender.html">Kalender</a></li>
+                <li><a href="gruppen.html" class="active">Gruppen</a></li>
+                <li><a href="profil.html">Profil</a></li>
+                <li><a href="logout.html">Logout</a></li>
+            </ul>
+        </nav>
+    </div>
+</header>
+
+<main class="section">
+    <div class="container groups-page-container">
+        <h1 class="page-title">Meine Gruppen</h1>
+        <p class="muted page-subtitle">
+            Behalte den Überblick über deine Studiengruppen, Teammitglieder und gemeinsamen Fortschritt.
+        </p>
+
+        <!-- Gruppenliste -->
+        <div class="grid groups-grid">
+            <!-- Gruppe 1 -->
+            <article class="feature group-card">
+                <h2>💻 Software Engineering – Projektgruppe</h2>
+                <p class="muted">Projekt: „StudyTasks App UI“</p>
+
+                <div class="group-members">
+                    <h3>👥 Mitglieder</h3>
+                    <ul>
+                        <li>Ersan Kavak (Teamleitung)</li>
+                        <li>Maria Huber</li>
+                        <li>Lukas Steiner</li>
+                        <li>Jasmin Berger</li>
+                    </ul>
+                </div>
+
+                <div class="group-progress">
+                    <h3>📊 Fortschritt</h3>
+                    <div class="progress group-progress-bar">
+                        <span style="width: 72%;"></span>
+                    </div>
+                    <p class="muted group-progress-text">72% erledigt</p>
+                </div>
+
+                <div class="group-actions">
+                    <button class="btn btn-primary" disabled>Gruppenaufgaben anzeigen</button>
+                    <button class="btn btn-ghost" disabled>Mitglieder verwalten</button>
+                </div>
+            </article>
+
+            <!-- Gruppe 2 -->
+            <article class="feature group-card">
+                <h2>🧮 Mathematik Lerngruppe</h2>
+                <p class="muted">Wöchentliche Vorbereitung auf Übungsblätter</p>
+
+                <div class="group-members">
+                    <h3>👥 Mitglieder</h3>
+                    <ul>
+                        <li>Serdar Toluay</li>
+                        <li>Ersan Kavak</li>
+                        <li>Ömer Ündemir</li>
+                    </ul>
+                </div>
+
+                <div class="group-progress">
+                    <h3>📊 Fortschritt</h3>
+                    <div class="progress group-progress-bar">
+                        <span style="width: 54%;"></span>
+                    </div>
+                    <p class="muted group-progress-text">54% erledigt</p>
+                </div>
+
+                <div class="group-actions">
+                    <button class="btn btn-primary" disabled>Gruppenaufgaben anzeigen</button>
+                    <button class="btn btn-ghost" disabled>Gruppe verlassen</button>
+                </div>
+            </article>
         </div>
-    </header>
 
-    <!-- Hauptinhalt -->
-    <main class="section">
-        <div class="container" style="max-width: 950px;">
-            <h1 style="text-align:center; font-size:2rem;">Meine Gruppen</h1>
-            <p class="muted" style="text-align:center; margin-bottom: 30px;">
-                Behalte den Überblick über deine Studiengruppen, Teammitglieder und gemeinsamen Fortschritt.
-            </p>
-
-            <!-- Gruppenliste -->
-            <div class="grid" style="gap: 24px;">
-                <!-- Gruppe 1 -->
-                <article class="feature" style="padding: 20px;">
-                    <h2>💻 Software Engineering – Projektgruppe</h2>
-                    <p class="muted">Projekt: „StudyTasks App UI“</p>
-
-                    <!-- Mitglieder -->
-                    <div style="margin-top: 14px;">
-                        <h3 style="font-size: 1rem;">👥 Mitglieder</h3>
-                        <ul style="margin-top: 6px; line-height: 1.6;">
-                            <li>Ersan Kavak (Teamleitung)</li>
-                            <li>Maria Huber</li>
-                            <li>Lukas Steiner</li>
-                            <li>Jasmin Berger</li>
-                        </ul>
-                    </div>
-
-                    <!-- Fortschritt -->
-                    <div style="margin-top: 16px;">
-                        <h3 style="font-size: 1rem;">📊 Fortschritt</h3>
-                        <div class="progress" style="margin-top: 6px;">
-                            <span style="width: 72%;"></span>
-                        </div>
-                        <p class="muted" style="margin-top: 4px;">72% erledigt</p>
-                    </div>
-
-                    <!-- Aktionen -->
-                    <div style="margin-top: 16px; display: flex; gap: 10px;">
-                        <button class="btn btn-primary" disabled>Gruppenaufgaben anzeigen</button>
-                        <button class="btn btn-ghost" disabled>Mitglieder verwalten</button>
-                    </div>
-                </article>
-
-                <!-- Gruppe 2 -->
-                <article class="feature" style="padding: 20px;">
-                    <h2>🧮 Mathematik Lerngruppe</h2>
-                    <p class="muted">Wöchentliche Vorbereitung auf Übungsblätter</p>
-
-                    <!-- Mitglieder -->
-                    <div style="margin-top: 14px;">
-                        <h3 style="font-size: 1rem;">👥 Mitglieder</h3>
-                        <ul style="margin-top: 6px; line-height: 1.6;">
-                            <li>Serdar Toluay</li>
-                            <li>Ersan Kavak</li>
-                            <li>Ömer Ündemir</li>
-                        </ul>
-                    </div>
-
-                    <!-- Fortschritt -->
-                    <div style="margin-top: 16px;">
-                        <h3 style="font-size: 1rem;">📊 Fortschritt</h3>
-                        <div class="progress" style="margin-top: 6px;">
-                            <span style="width: 54%;"></span>
-                        </div>
-                        <p class="muted" style="margin-top: 4px;">54% erledigt</p>
-                    </div>
-
-                    <!-- Aktionen -->
-                    <div style="margin-top: 16px; display: flex; gap: 10px;">
-                        <button class="btn btn-primary" disabled>Gruppenaufgaben anzeigen</button>
-                        <button class="btn btn-ghost" disabled>Gruppe verlassen</button>
-                    </div>
-                </article>
-            </div>
-
-            <!-- CTA -->
-            <div style="text-align:center; margin-top: 40px;">
-                <button class="btn btn-primary" disabled>+ Neue Gruppe erstellen</button>
-            </div>
+        <div class="page-center-cta">
+            <button class="btn btn-primary" disabled>+ Neue Gruppe erstellen</button>
         </div>
-    </main>
+    </div>
+</main>
 
-    <!-- Footer -->
-    <footer class="site-footer">
-        <div class="container footer-inner">
-            <div class="brand-row">
-                <img src="../images/Logo.png" alt="StudyTasks Logo" class="brand-logo small" />
-            </div>
-            <p class="muted">
-                © <span id="y"></span> StudyTasks. FH-freundlich, einfach, fokussiert.
-            </p>
+<footer class="site-footer">
+    <div class="container footer-inner">
+        <div class="brand-row">
+            <img src="../images/Logo.png" alt="StudyTasks Logo" class="brand-logo small" />
         </div>
-    </footer>
+        <p class="muted">
+            © <span id="y"></span> StudyTasks. FH-freundlich, einfach, fokussiert.
+        </p>
+    </div>
+</footer>
 
-    <!-- Script -->
-    <script>
-        document.getElementById("y").textContent = new Date().getFullYear();
-    </script>
+<script>
+    document.getElementById("y").textContent = new Date().getFullYear();
+</script>
 </body>
 
 </html>
