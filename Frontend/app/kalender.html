@@ -37,30 +37,24 @@
 
     <!-- Hauptinhalt -->
     <main class="section">
-        <div class="container" style="max-width: 950px;">
-            <h1 style="text-align:center; font-size:2rem;">Mein Kalender</h1>
-            <p class="muted" style="text-align:center; margin-bottom: 30px;">
+        <div class="container calendar-container">
+            <h1 class="page-title">Mein Kalender</h1>
+            <p class="muted page-subtitle">
                 Hier findest du alle wichtigen Termine, Abgaben und Deadlines im Überblick.
             </p>
 
             <!-- Monatsübersicht -->
-            <section class="feature" style="padding: 24px;">
-                <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px;">
-                    <h2 style="margin:0;">📆 Oktober 2025</h2>
-                    <div style="display:flex; gap:8px;">
+            <section class="feature">
+                <div class="calendar-month-header">
+                    <h2>📆 Oktober 2025</h2>
+                    <div class="calendar-month-controls">
                         <button class="btn btn-ghost" disabled>&lt; Vorheriger Monat</button>
                         <button class="btn btn-ghost" disabled>Nächster Monat &gt;</button>
                     </div>
                 </div>
 
                 <!-- Kalendergitter -->
-                <div style="
-          display: grid;
-          grid-template-columns: repeat(7, 1fr);
-          gap: 6px;
-          margin-top: 20px;
-          text-align:center;
-        ">
+                <div class="calendar-grid">
                     <!-- Wochentage -->
                     <div><strong>Mo</strong></div>
                     <div><strong>Di</strong></div>
@@ -70,8 +64,7 @@
                     <div><strong>Sa</strong></div>
                     <div><strong>So</strong></div>
 
-                    <!-- Beispielhafte Tage -->
-                    <!-- Leere Kästchen für den Monatsanfang -->
+                    <!-- Leere Kästchen -->
                     <div></div>
                     <div></div>
                     <div></div>
@@ -116,7 +109,7 @@
             </section>
 
             <!-- Legende -->
-            <div style="margin-top:30px; text-align:center;">
+            <div class="calendar-legend">
                 <p class="muted">📘 Mathe | 💻 SE-Projekt | 🧠 Datenbanken</p>
             </div>
         </div>
@@ -132,42 +125,9 @@
         </div>
     </footer>
 
-    <!-- Script -->
     <script>
-        // Jahr im Footer automatisch setzen
         document.getElementById("y").textContent = new Date().getFullYear();
     </script>
-
-    <!-- Inline Style für Kalender -->
-    <style>
-        .day-cell {
-            border: 1px solid #ddd;
-            padding: 10px;
-            border-radius: 8px;
-            min-height: 60px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 15px;
-        }
-        
-        .day-cell.weekend {
-            background-color: #f9f9f9;
-            color: #888;
-        }
-        
-        .day-cell.highlight {
-            background-color: #e8f5f3;
-            border-color: var(--brand);
-            font-weight: 600;
-            color: #2d7f74;
-            cursor: pointer;
-        }
-        
-        .day-cell.highlight:hover {
-            background-color: #d9efeb;
-        }
-    </style>
 </body>
 
 </html>

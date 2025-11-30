@@ -1,3 +1,8 @@
+<script type="module">
+  import { initRegisterForm } from '../js/auth.js';
+  initRegisterForm();
+</script>
+
 <!doctype html>
 <html lang="de">
 
@@ -45,27 +50,27 @@
             <form class="form" style="display: flex; flex-direction: column; gap: 14px; margin-top: 20px;">
                 <!-- Name -->
                 <label for="name">Vollständiger Name</label>
-                <input type="text" id="name" placeholder="Max Mustermann" disabled style="padding: 10px; border: 1px solid #ccc; border-radius: 10px; font-size: 15px;" />
+                <input type="text" id="name" placeholder="Max Mustermann" style="padding: 10px; border: 1px solid #ccc; border-radius: 10px; font-size: 15px;" />
 
                 <!-- Matrikelnummer -->
                 <label for="matrikelnummer">Matrikelnummer (FH Technikum Wien)</label>
-                <input type="text" id="matrikelnummer" placeholder="z. B. 12345678" disabled style="padding: 10px; border: 1px solid #ccc; border-radius: 10px; font-size: 15px;" />
+                <input type="text" id="matrikelnummer" placeholder="z. B. 12345678" style="padding: 10px; border: 1px solid #ccc; border-radius: 10px; font-size: 15px;" />
 
                 <!-- Benutzername -->
                 <label for="username">FH-Benutzername</label>
-                <input type="text" id="username" placeholder="z. B. wi00b000" disabled style="padding: 10px; border: 1px solid #ccc; border-radius: 10px; font-size: 15px;" />
+                <input type="text" id="username" placeholder="z. B. wi00b000" style="padding: 10px; border: 1px solid #ccc; border-radius: 10px; font-size: 15px;" />
 
                 <!-- E-Mail -->
                 <label for="email">E-Mail-Adresse</label>
-                <input type="email" id="email" placeholder="wi00b000@technikum-wien.at" disabled style="padding: 10px; border: 1px solid #ccc; border-radius: 10px; font-size: 15px;" />
+                <input type="email" id="email" placeholder="wi00b000@technikum-wien.at" style="padding: 10px; border: 1px solid #ccc; border-radius: 10px; font-size: 15px;" />
 
                 <!-- Passwort -->
                 <label for="password">Passwort</label>
-                <input type="password" id="password" placeholder="********" disabled style="padding: 10px; border: 1px solid #ccc; border-radius: 10px; font-size: 15px;" />
+                <input type="password" id="password" placeholder="********" style="padding: 10px; border: 1px solid #ccc; border-radius: 10px; font-size: 15px;" />
 
                 <!-- Passwort bestätigen -->
                 <label for="passwordConfirm">Passwort bestätigen</label>
-                <input type="password" id="passwordConfirm" placeholder="********" disabled style="padding: 10px; border: 1px solid #ccc; border-radius: 10px; font-size: 15px;" />
+                <input type="password" id="passwordConfirm" placeholder="********" style="padding: 10px; border: 1px solid #ccc; border-radius: 10px; font-size: 15px;" />
 
                 <!-- Hinweis -->
                 <p class="muted" style="font-size: 14px; margin-top: 4px;">
@@ -74,7 +79,7 @@
                 </p>
 
                 <!-- Button -->
-                <button class="btn btn-primary" disabled>Registrieren</button>
+                <button class="btn btn-primary">Registrieren</button>
             </form>
         </div>
     </main>

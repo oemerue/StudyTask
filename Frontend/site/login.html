@@ -1,3 +1,8 @@
+<script type="module">
+  import { initLoginForm } from '../js/auth.js';
+  initLoginForm();
+</script>
+
 <!doctype html>
 <html lang="de">
 
@@ -46,11 +51,11 @@
             <form class="form" style="display: flex; flex-direction: column; gap: 14px; margin-top: 16px;">
                 <!-- Benutzername oder E-Mail -->
                 <label for="loginId">E-Mail-Adresse oder FH-Benutzername</label>
-                <input type="text" id="loginId" placeholder="z. B. mustermann01 oder name@technikum-wien.at" disabled style="padding: 10px; border: 1px solid #ccc; border-radius: 10px; font-size: 15px;" />
+                <input type="text" id="loginId" placeholder="z. B. mustermann01 oder name@technikum-wien.at" style="padding: 10px; border: 1px solid #ccc; border-radius: 10px; font-size: 15px;" />
 
                 <!-- Passwort -->
                 <label for="password">Passwort</label>
-                <input type="password" id="password" placeholder="********" disabled style="padding: 10px; border: 1px solid #ccc; border-radius: 10px; font-size: 15px;" />
+                <input type="password" id="password" placeholder="********" style="padding: 10px; border: 1px solid #ccc; border-radius: 10px; font-size: 15px;" />
 
                 <!-- Passwort vergessen -->
                 <p class="muted" style="font-size: 14px; text-align: left; margin-top: 4px;">
@@ -58,7 +63,7 @@
                 </p>
 
                 <!-- Button -->
-                <button class="btn btn-primary" disabled>Einloggen</button>
+                <button class="btn btn-primary">Einloggen</button>
             </form>
         </div>
     </main>

@@ -409,3 +409,410 @@ body {
         color: var(--ink);
     }
 }
+/* ===== Utility-Klassen für App-Seiten ===== */
+
+.page-title {
+    text-align: center;
+    font-size: 2rem;
+}
+
+.page-subtitle {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.page-subtitle-lg {
+    text-align: center;
+    margin-bottom: 40px;
+}
+
+.page-intro {
+    text-align: center;
+    max-width: 800px;
+    margin-inline: auto;
+}
+
+.page-center-cta {
+    text-align: center;
+    margin-top: 40px;
+}
+
+.page-narrow-800 {
+    max-width: 800px;
+}
+
+.page-narrow-950 {
+    max-width: 950px;
+}
+
+.mt-30 {
+    margin-top: 30px;
+}
+
+.mt-40 {
+    margin-top: 40px;
+}
+
+.mt-50 {
+    margin-top: 50px;
+}
+
+/* Formulare & Inputs */
+
+.form-stacked {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.input-standard {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    font-size: 15px;
+}
+
+.filter-form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+}
+
+.filter-select {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    font-size: 15px;
+}
+
+.filter-search {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    flex: 1;
+    min-width: 220px;
+}
+
+/* Grids & Karten */
+
+.grid-auto-cards {
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px;
+}
+
+.tasks-grid {
+    gap: 16px;
+}
+
+.groups-grid {
+    gap: 24px;
+}
+
+/* Buttons-Reihen */
+
+.btn-row {
+    margin-top: 10px;
+    display: flex;
+    gap: 8px;
+}
+
+/* ===== Logout-Seite ===== */
+
+.logout-main {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 80vh;
+}
+
+.logout-card {
+    text-align: center;
+    max-width: 600px;
+    margin-inline: auto;
+}
+
+.logout-logo {
+    width: 90px;
+    margin-bottom: 20px;
+}
+
+.logout-link {
+    margin-top: 16px;
+}
+
+/* ===== Dashboard ===== */
+
+.dashboard-stats-grid {
+    margin-top: 40px;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 24px;
+}
+
+.dashboard-deadlines-grid {
+    gap: 14px;
+}
+
+/* ===== Kalender ===== */
+
+.calendar-container {
+    max-width: 950px;
+}
+
+.calendar-month-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+}
+
+.calendar-month-controls {
+    display: flex;
+    gap: 8px;
+}
+
+.calendar-grid {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    gap: 6px;
+    margin-top: 20px;
+    text-align: center;
+}
+
+.calendar-legend {
+    margin-top: 30px;
+    text-align: center;
+}
+
+.day-cell {
+    border: 1px solid #ddd;
+    padding: 10px;
+    border-radius: 8px;
+    min-height: 60px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 15px;
+}
+
+.day-cell.weekend {
+    background-color: #f9f9f9;
+    color: #888;
+}
+
+.day-cell.highlight {
+    background-color: #e8f5f3;
+    border-color: var(--brand);
+    font-weight: 600;
+    color: #2d7f74;
+    cursor: pointer;
+}
+
+.day-cell.highlight:hover {
+    background-color: #d9efeb;
+}
+
+/* ===== Tags ===== */
+
+.tags-page-container {
+    max-width: 950px;
+}
+
+.tag-filter-card {
+    padding: 20px;
+    margin-bottom: 28px;
+}
+
+.tag-filter-form {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    justify-content: center;
+}
+
+.tag-search {
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    flex: 1;
+    min-width: 220px;
+}
+
+.tag-card {
+    padding: 20px;
+}
+
+.tag-progress {
+    margin-top: 8px;
+}
+
+.tag-progress-text {
+    margin-top: 4px;
+}
+
+.tag-card-actions {
+    margin-top: 12px;
+}
+
+.tags-cta {
+    text-align: center;
+    margin-top: 40px;
+}
+
+/* ===== Gruppen ===== */
+
+.groups-page-container {
+    max-width: 950px;
+}
+
+.group-card {
+    padding: 20px;
+}
+
+.group-members {
+    margin-top: 14px;
+}
+
+.group-members ul {
+    margin-top: 6px;
+    line-height: 1.6;
+}
+
+.group-progress {
+    margin-top: 16px;
+}
+
+.group-progress-bar {
+    margin-top: 6px;
+}
+
+.group-progress-text {
+    margin-top: 4px;
+}
+
+.group-actions {
+    margin-top: 16px;
+    display: flex;
+    gap: 10px;
+}
+
+/* ===== Profil ===== */
+
+.profile-page-container {
+    max-width: 800px;
+}
+
+.profile-card {
+    padding: 24px;
+    text-align: center;
+}
+
+.profile-avatar {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin-bottom: 16px;
+}
+
+.profile-form {
+    margin-top: 30px;
+}
+
+.account-section {
+    margin-top: 50px;
+    text-align: center;
+}
+
+/* ===== Aufgaben ===== */
+
+.tasks-page-container {
+    max-width: 950px;
+}
+
+.tasks-filter-card {
+    padding: 20px;
+    margin-bottom: 24px;
+}
+
+.task-card {
+    padding: 16px;
+}
+
+.task-text-muted {
+    margin-top: 8px;
+}
+
+.task-body {
+    margin-top: 8px;
+}
+
+.task-actions {
+    margin-top: 10px;
+    display: flex;
+    gap: 8px;
+}
+
+.tasks-cta {
+    text-align: center;
+    margin-top: 40px;
+}
+
+/* ===== Statistik ===== */
+
+.stats-page-container {
+    max-width: 1000px;
+}
+
+.stats-grid {
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px;
+}
+
+.chart-card {
+    padding: 24px;
+    border-radius: 10px;
+    background: #fafafa;
+    margin-bottom: 30px;
+}
+
+.chart-bar-row {
+    display: flex;
+    align-items: flex-end;
+    gap: 14px;
+    height: 200px;
+    margin-top: 20px;
+}
+
+.pie-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 40px;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.pie {
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    background: conic-gradient(#2d7f74 0% 40%, #e6b800 40% 70%, #b76db7 70% 90%, #ccc 90% 100%);
+}
+
+.pie-legend {
+    list-style: none;
+    line-height: 1.8;
+    margin: 0;
+    padding: 0;
+}
+
+.stats-summary {
+    margin-top: 50px;
+    text-align: center;
+}
+
+.stats-summary p {
+    max-width: 700px;
+    margin: 10px auto;
+}
