@@ -1,0 +1,94 @@
+<!doctype html>
+<html lang="de">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Kalendereinträge – StudyTasks</title>
+    <meta name="description" content="Übersicht aller Aufgaben und Deadlines für einen bestimmten Tag in deinem StudyTasks-Kalender." />
+
+    <!-- Schrift & Styles -->
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../src/styles.css" />
+    <link rel="icon" href="../images/Logo.png" />
+</head>
+
+<body>
+    <!-- Header -->
+    <header class="site-header">
+        <div class="container header-inner">
+            <a class="brand" href="dashboard.html">
+                <img src="../images/Logo.png" alt="StudyTasks Logo" class="brand-logo" />
+            </a>
+
+            <nav class="nav">
+                <ul class="nav-list">
+                    <li><a href="dashboard.html">Dashboard</a></li>
+                    <li><a href="aufgaben.html">Aufgaben</a></li>
+                    <li><a href="kalender.html" class="active">Kalender</a></li>
+                    <li><a href="gruppen.html">Gruppen</a></li>
+                    <li><a href="profil.html">Profil</a></li>
+                    <li><a href="logout.html">Logout</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hauptinhalt -->
+    <main class="section">
+        <div class="container" style="max-width: 800px;">
+            <h2 id="dayTitle" style="text-align:center; font-size:2rem;">Kalendereinträge</h2>
+            <p class="muted" style="text-align:center; margin-bottom: 28px;">
+                Hier siehst du alle Aufgaben, Deadlines und Termine für diesen Tag.
+            </p>
+
+            <!-- Aufgabenliste -->
+            <div id="taskList" class="grid" style="display:flex; flex-direction:column; gap:18px;">
+
+                <div class="feature" style="padding:18px;">
+                    <h3>📘 Mathe Übungsblatt 4</h3>
+                    <p><strong>Status:</strong> Offen</p>
+                    <p><strong>Beschreibung:</strong> Aufgaben 3–6 aus Kapitel 5 bearbeiten. Upload im Moodle.</p>
+                    <div style="margin-top:10px;">
+                        <button class="btn btn-success">Als erledigt markieren</button>
+                        <button class="btn btn-ghost">Bearbeiten</button>
+                    </div>
+                </div>
+
+                <div class="feature" style="padding:18px;">
+                    <h3>💻 SE-Projekt – Designphase</h3>
+                    <p><strong>Status:</strong> In Bearbeitung</p>
+                    <p><strong>Beschreibung:</strong> Arbeit am UI-Design, Vorbereitung der Präsentation.</p>
+                    <div style="margin-top:10px;">
+                        <button class="btn btn-success">Als erledigt markieren</button>
+                        <button class="btn btn-ghost">Bearbeiten</button>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Button -->
+            <div style="text-align:center; margin-top: 32px;">
+                <a href="kalender.html" class="btn btn-ghost">← Zurück zum Kalender</a>
+                <a href="aufgabe-erstellen.html" class="btn btn-primary">+ Neue Aufgabe hinzufügen</a>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="container footer-inner">
+            <div class="brand-row">
+                <img src="../images/Logo.png" alt="StudyTasks Logo" class="brand-logo small" />
+            </div>
+            <p class="muted">© <span id="y"></span> StudyTasks. FH-freundlich, einfach, fokussiert.</p>
+        </div>
+    </footer>
+
+    <!-- Script -->
+    <script src="../src/app.js"></script>
+    <script src="js/kalender-tag.js"></script>
+</body>
+
+</html>
