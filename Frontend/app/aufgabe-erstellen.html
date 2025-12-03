@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="de">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Neue Aufgabe erstellen – StudyTasks</title>
+    <meta name="description" content="Erstelle eine neue Studienaufgabe in StudyTasks: Titel, Fach, Fälligkeitsdatum und Status hinzufügen." />
+
+    <!-- Schrift & Styles -->
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../src/styles.css" />
+    <link rel="icon" href="../images/Logo.png" />
+</head>
+
+<body>
+    <!-- Header -->
+    <header class="site-header">
+        <div class="container header-inner">
+            <a class="brand" href="dashboard.html">
+                <img src="../images/Logo.png" alt="StudyTasks Logo" class="brand-logo" />
+            </a>
+
+            <nav class="nav">
+                <ul class="nav-list">
+                    <li><a href="dashboard.html">Dashboard</a></li>
+                    <li><a href="aufgaben.html" class="active">Aufgaben</a></li>
+                    <li><a href="kalender.html">Kalender</a></li>
+                    <li><a href="gruppen.html">Gruppen</a></li>
+                    <li><a href="tags.html">Tags</a></li>
+                    <li><a href="statistik.html">Statistik</a></li>
+                    <li><a href="profil.html">Profil</a></li>
+                    <li><a href="logout.html">Logout</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hauptinhalt -->
+    <main class="section">
+        <div class="container demo-card" style="max-width: 700px;">
+            <h2>Neue Aufgabe erstellen</h2>
+            <p class="muted">Füge eine neue Studienaufgabe hinzu. Du kannst Titel, Fach, Fälligkeitsdatum, Status und Beschreibung angeben.</p>
+
+            <form id="new-task-form" class="form" style="display: flex; flex-direction: column; gap: 16px; margin-top: 24px;">
+                <!-- Titel -->
+                <label for="taskTitle">Titel der Aufgabe</label>
+                <input type="text" id="taskTitle" placeholder="z. B. SE-Projekt Dokumentation" required style="padding: 10px; border: 1px solid #ccc; border-radius: 8px; font-size: 15px;" />
+
+                <!-- Fach -->
+                <label for="taskSubject">Fach / Modul</label>
+                <input type="text" id="taskSubject" placeholder="z. B. Software Engineering oder Datenbanken" required style="padding: 10px; border: 1px solid #ccc; border-radius: 8px; font-size: 15px;" />
+
+                <!-- Fälligkeitsdatum -->
+                <label for="taskDate">Fälligkeitsdatum</label>
+                <input type="date" id="taskDate" required style="padding: 10px; border: 1px solid #ccc; border-radius: 8px; font-size: 15px;" />
+
+                <!-- Status -->
+                <label for="taskStatus">Status</label>
+                <select id="taskStatus" required style="padding: 10px; border: 1px solid #ccc; border-radius: 8px; font-size: 15px;">
+          <option>Offen</option>
+          <option>In Bearbeitung</option>
+          <option>Erledigt</option>
+        </select>
+
+                <!-- Beschreibung -->
+                <label for="taskDesc">Beschreibung</label>
+                <textarea id="taskDesc" rows="4" placeholder="Kurze Beschreibung der Aufgabe..." style="padding: 10px; border: 1px solid #ccc; border-radius: 8px; font-size: 15px;"></textarea>
+
+                <!-- Buttons -->
+                <div style="display:flex; justify-content:space-between; margin-top: 10px;">
+                    <a href="aufgaben.html" class="btn btn-ghost">Abbrechen</a>
+                    <button type="submit" class="btn btn-primary">Aufgabe speichern</button>
+                </div>
+            </form>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="container footer-inner">
+            <div class="brand-row">
+                <img src="../images/Logo.png" alt="StudyTasks Logo" class="brand-logo small" />
+            </div>
+            <p class="muted">© <span id="y"></span> StudyTasks. FH-freundlich, einfach, fokussiert.</p>
+        </div>
+    </footer>
+
+    <!-- Script -->
+    <script src="../src/app.js"></script>
+    <script src="js/aufgabe-erstellen.js"></script>
+</body>
+
+</html>

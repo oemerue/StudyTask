@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="de">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Neue Gruppe erstellen – StudyTasks</title>
+    <meta name="description" content="Erstelle eine neue Studiengruppe in StudyTasks, lade Mitglieder ein und verwalte gemeinsame Aufgaben." />
+
+    <!-- Schrift & Styles -->
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../src/styles.css" />
+    <link rel="icon" href="../images/Logo.png" />
+</head>
+
+<body>
+    <!-- Header -->
+    <header class="site-header">
+        <div class="container header-inner">
+            <a class="brand" href="dashboard.html">
+                <img src="../images/Logo.png" alt="StudyTasks Logo" class="brand-logo" />
+            </a>
+
+            <nav class="nav">
+                <ul class="nav-list">
+                    <li><a href="dashboard.html">Dashboard</a></li>
+                    <li><a href="aufgaben.html">Aufgaben</a></li>
+                    <li><a href="kalender.html">Kalender</a></li>
+                    <li><a href="gruppen.html" class="active">Gruppen</a></li>
+                    <li><a href="profil.html">Profil</a></li>
+                    <li><a href="logout.html">Logout</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hauptinhalt -->
+    <main class="section" style="display:flex; justify-content:center; align-items:center; min-height:80vh;">
+        <div class="container demo-card" style="max-width:650px;">
+            <h2 style="text-align:center;">Neue Gruppe erstellen</h2>
+            <p class="muted" style="text-align:center;">
+                Füge eine neue Studiengruppe hinzu. Du kannst den Gruppennamen, eine Beschreibung und Mitglieder angeben.
+            </p>
+
+            <form id="createGroupForm" style="display:flex; flex-direction:column; gap:16px; margin-top:20px;">
+                <!-- Gruppenname -->
+                <label for="groupName">Name der Gruppe</label>
+                <input type="text" id="groupName" placeholder="z. B. Software Engineering – Projektgruppe" style="padding:10px; border:1px solid #ccc; border-radius:10px; font-size:15px;" required />
+
+                <!-- Beschreibung -->
+                <label for="groupDesc">Beschreibung</label>
+                <textarea id="groupDesc" rows="4" placeholder="Kurze Beschreibung der Gruppe ..." style="padding:10px; border:1px solid #ccc; border-radius:10px; font-size:15px;"></textarea>
+
+                <!-- Mitglieder -->
+                <label for="groupMembers">Mitglieder (E-Mail oder Benutzername, durch Komma getrennt)</label>
+                <textarea id="groupMembers" rows="3" placeholder="z. B. maria.huber@technikum-wien.at, lukas.steiner@technikum-wien.at" style="padding:10px; border:1px solid #ccc; border-radius:10px; font-size:15px;"></textarea>
+
+                <!-- Buttons -->
+                <div style="display:flex; justify-content:space-between; margin-top:10px;">
+                    <a href="gruppen.html" class="btn btn-secondary">Abbrechen</a>
+                    <button type="submit" class="btn btn-primary">Gruppe erstellen</button>
+                </div>
+            </form>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer class="site-footer">
+        <div class="container footer-inner">
+            <div class="brand-row">
+                <img src="../images/Logo.png" alt="StudyTasks Logo" class="brand-logo small" />
+            </div>
+            <p class="muted">© <span id="y"></span> StudyTasks. FH-freundlich, einfach, fokussiert.</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="../src/app.js"></script>
+    <script src="js/gruppe-erstellen.js"></script>
+</body>
+
+</html>
