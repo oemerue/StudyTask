@@ -5,10 +5,10 @@ $charset = 'utf8mb4';
  * Fallback-Werte = deine AWS-RDS-Daten
  * (bitte DB_PASS unten anpassen!)
  */
-$defaultHost = 'studytask.cr622oc4qe11.eu-central-1.rds.amazonaws.com';
+$defaultHost = 'studytask.c182o44suwmb.eu-central-1.rds.amazonaws.com';
 $defaultDb   = 'studytask';
 $defaultUser = 'ServerAdmin';
-$defaultPass = 'SerdarErsanOemer2025';
+$defaultPass = 'SerdoErdo123';
 
 // zuerst aus ENV lesen, sonst auf AWS-Fallback gehen
 $host = getenv('DB_HOST') ?: $defaultHost;
@@ -27,10 +27,11 @@ $options = [
 try {
     $pdo = new PDO($dsn, $user, $pass, $options);
 } catch (PDOException $e) {
-    http_response_code(500);
-    header('Content-Type: application/json');
-    echo json_encode(['error' => 'Database connection failed']);
-    // optional zum Debuggen:
-    // echo json_encode(['error' => $e->getMessage()]);
-    exit;
+  http_response_code(500);
+  header('Content-Type: application/json; charset=utf-8');
+  echo json_encode([
+    'error' => $e->getMessage(),
+    'code'  => $e->getCode()
+  ]);
+  exit;
 }
