@@ -5,9 +5,8 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Gruppenaufgaben – StudyTasks</title>
-    <meta name="description" content="Übersicht aller Aufgaben innerhalb deiner Studiengruppe in StudyTasks." />
+    <meta name="description" content="Aufgaben einer Studiengruppe in StudyTasks." />
 
-    <!-- Schrift & Styles -->
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../src/styles.css" />
@@ -15,12 +14,13 @@
 </head>
 
 <body>
-    <!-- Header -->
+
     <header class="site-header">
         <div class="container header-inner">
             <a class="brand" href="dashboard.html">
                 <img src="../images/Logo.png" alt="StudyTasks Logo" class="brand-logo" />
             </a>
+
             <nav class="nav">
                 <ul class="nav-list">
                     <li><a href="dashboard.html">Dashboard</a></li>
@@ -34,59 +34,92 @@
         </div>
     </header>
 
-    <!-- Hauptinhalt -->
     <main class="section">
-        <div class="container" style="max-width:900px;">
-            <h2 style="text-align:center;">📋 Gruppenaufgaben – Software Engineering</h2>
-            <p class="muted" style="text-align:center; margin-bottom:30px;">Hier siehst du alle Aufgaben, die deiner Studiengruppe zugewiesen sind.</p>
+        <div class="container tasks-page-container">
+            <h1 class="page-title">Gruppenaufgaben</h1>
+            <p class="muted page-subtitle">
+                Alle Aufgaben dieser Studiengruppe im Überblick.
+            </p>
 
-            <!-- Aufgabenliste -->
-            <div class="grid" style="gap:20px;">
-                <article class="feature" style="padding:20px;">
-                    <h3>UI-Design fertigstellen</h3>
-                    <p class="muted">Fällig: 25. Okt 2025 • Status: In Bearbeitung</p>
-                    <p>Maria arbeitet am Dashboard-Layout. Review am Donnerstag.</p>
-                    <div style="margin-top:12px;">
-                        <button class="btn btn-primary">Als erledigt markieren</button>
-                        <button class="btn btn-ghost">Bearbeiten</button>
-                    </div>
-                </article>
+            <div id="tasksContainer" class="grid tasks-grid"></div>
 
-                <article class="feature" style="padding:20px;">
-                    <h3>Backend-Anbindung testen</h3>
-                    <p class="muted">Fällig: 29. Okt 2025 • Status: Offen</p>
-                    <p>Ersan überprüft die Datenbank-Verbindung. Testlauf am Freitag.</p>
-                    <div style="margin-top:12px;">
-                        <button class="btn btn-primary">Als erledigt markieren</button>
-                        <button class="btn btn-ghost">Bearbeiten</button>
-                    </div>
-                </article>
-            </div>
-
-            <!-- Neue Gruppenaufgabe -->
-            <div style="text-align:center; margin-top:30px;">
-                <a href="gruppe-aufgabe-erstellen.html" class="btn btn-primary">+ Neue Gruppenaufgabe erstellen</a>
-            </div>
-
-            <!-- Zurück -->
-            <div style="text-align:center; margin-top:20px;">
-                <a href="gruppen.html" class="btn btn-ghost">← Zurück zu Gruppen</a>
+            <div class="tasks-cta">
+                <a id="createTaskBtn" class="btn btn-primary">
+                + Neue Aufgabe erstellen
+            </a>
             </div>
         </div>
     </main>
 
-    <!-- Footer -->
     <footer class="site-footer">
         <div class="container footer-inner">
             <div class="brand-row">
                 <img src="../images/Logo.png" alt="StudyTasks Logo" class="brand-logo small" />
             </div>
-            <p class="muted">© <span id="y"></span> StudyTasks. FH-freundlich, einfach, fokussiert.</p>
+            <p class="muted">© <span id="y"></span> StudyTasks</p>
         </div>
     </footer>
 
-    <script src="../src/app.js"></script>
-    <script src="js/gruppenaufgaben.js"></script>
+    <script>
+        document.getElementById("y").textContent = new Date().getFullYear();
+    </script>
+
+    <script src="js/auth-check.js"></script>
+    <script src="js/api.js"></script>
+    <script src="js/tasks.js"></script>
+
+    <script>
+        const params = new URLSearchParams(window.location.search);
+        const groupId = params.get("group_id");
+
+        if (!groupId) {
+            alert("Keine Gruppe ausgewählt");
+            window.location.href = "gruppen.html";
+        }
+
+        document.getElementById("createTaskBtn").href =
+            "aufgabe-erstellen.html?group_id=" + encodeURIComponent(groupId);
+
+        (async() => {
+            const container = document.getElementById("tasksContainer");
+            container.innerHTML = "";
+
+            try {
+                const tasks = await loadTasksForGroup(groupId);
+
+                if (!tasks || tasks.length === 0) {
+                    container.innerHTML = "<p>Keine Aufgaben in dieser Gruppe.</p>";
+                    return;
+                }
+
+                tasks.forEach(t => {
+                    const el = document.createElement("article");
+                    el.className = "feature task-card";
+
+                    el.innerHTML = `
+                    <h3>${t && t.title ? t.title : ""}</h3>
+                    <p class="muted">Deadline: ${t.due_at ? String(t.due_at).slice(0,16) : "—"}</p>
+                    <p class="muted">Status: ${t.status}</p>
+                    <button class="btn btn-primary">Weiter</button>
+                `;
+
+                    el.querySelector("button").onclick = async() => {
+                        const next = nextStatus(t.status); // aus tasks.js
+                        await updateTaskStatus(t.id, next);
+                        location.reload();
+                    };
+
+                    container.appendChild(el);
+                });
+            } catch (e) {
+                console.error(e);
+                container.innerHTML = "<p>Fehler beim Laden der Aufgaben.</p>";
+            }
+        })();
+    </script>
+
+    <script src="js/admin-nav.js"></script>
+
 </body>
 
 </html>
