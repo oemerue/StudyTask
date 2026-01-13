@@ -1,5 +1,4 @@
 <?php
-
 require_once __DIR__ . '/../core/bootstrap.php';
 
 $input = getJsonInput();
@@ -12,7 +11,7 @@ if ($email === '' || $password === '') {
 }
 
 $stmt = $pdo->prepare('
-    SELECT id, matrikelnummer, email, password_hash, display_name
+    SELECT id, matrikelnummer, email, password_hash, display_name, role
     FROM users
     WHERE email = ?
     LIMIT 1
@@ -24,12 +23,14 @@ if (!$user || !password_verify($password, $user['password_hash'])) {
     errorResponse('Ungültige Zugangsdaten', 401);
 }
 
-// Session setzen
+// Session
 $_SESSION['user_id'] = (int)$user['id'];
+$_SESSION['role']    = $user['role'];
 
 jsonResponse([
     'id'             => (int)$user['id'],
     'matrikelnummer' => $user['matrikelnummer'],
     'email'          => $user['email'],
     'display_name'   => $user['display_name'],
+    'role'           => $user['role'],
 ]);

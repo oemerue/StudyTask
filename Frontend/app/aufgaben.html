@@ -1,16 +1,3 @@
-<script type="module">
-  import { loadTasksForGroup } from '../js/tasks.js';
-
-  const GROUP_ID = 1;
-
-  loadTasksForGroup(GROUP_ID)
-    .then(tasks => {
-      console.log('Tasks:', tasks);
-      // TODO: hier DOM aufbauen
-    })
-    .catch(err => alert(err.message));
-</script>
-
 <!doctype html>
 <html lang="de">
 
@@ -18,128 +5,413 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Aufgaben – StudyTasks</title>
-    <meta name="description" content="Verwalte deine Studienaufgaben in StudyTasks – erstellen, bearbeiten, erledigen und priorisieren." />
+    <meta name="description" content="Verwalte deine Aufgaben in StudyTasks." />
 
-    <!-- Schrift & Styles -->
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+
     <link rel="stylesheet" href="../src/styles.css" />
     <link rel="icon" href="../images/Logo.png" />
 </head>
 
 <body>
-<header class="site-header">
-    <div class="container header-inner">
-        <a class="brand" href="dashboard.html">
-            <img src="../images/Logo.png" alt="StudyTasks Logo" class="brand-logo" />
-        </a>
 
-        <nav class="nav">
-            <ul class="nav-list">
-                <li><a href="dashboard.html">Dashboard</a></li>
-                <li><a href="aufgaben.html" class="active">Aufgaben</a></li>
-                <li><a href="kalender.html">Kalender</a></li>
-                <li><a href="gruppen.html">Gruppen</a></li>
-                <li><a href="profil.html">Profil</a></li>
-                <li><a href="logout.html">Logout</a></li>
-            </ul>
-        </nav>
-    </div>
-</header>
+    <header class="site-header">
+        <div class="container header-inner">
+            <a class="brand" href="dashboard.html">
+                <img src="../images/Logo.png" alt="StudyTasks Logo" class="brand-logo" />
+            </a>
 
-<main class="section">
-    <div class="container tasks-page-container">
-        <h1 class="page-title">Meine Aufgaben</h1>
-        <p class="muted page-subtitle">
-            Behalte deine Studienaufgaben im Blick. Filtere, bearbeite oder markiere sie als erledigt.
-        </p>
-
-        <!-- Filterbereich -->
-        <div class="feature tasks-filter-card">
-            <form class="filter-form">
-                <select class="filter-select">
-                    <option>Alle Aufgaben</option>
-                    <option>Offen</option>
-                    <option>In Bearbeitung</option>
-                    <option>Erledigt</option>
-                </select>
-
-                <select class="filter-select">
-                    <option>Alle Fächer</option>
-                    <option>#Mathe</option>
-                    <option>#SoftwareEngineering</option>
-                    <option>#Datenbanken</option>
-                </select>
-
-                <input type="search" placeholder="Suche nach Aufgaben..." class="filter-search" disabled />
-                <button class="btn btn-primary" disabled>Filter anwenden</button>
-            </form>
+            <nav class="nav">
+                <ul class="nav-list">
+                    <li><a href="dashboard.html">Dashboard</a></li>
+                    <li><a href="aufgaben.html" class="active">Aufgaben</a></li>
+                    <li><a href="kalender.html">Kalender</a></li>
+                    <li><a href="gruppen.html">Gruppen</a></li>
+                    <li><a href="profil.html">Profil</a></li>
+                    <li><a href="logout.html">Logout</a></li>
+                </ul>
+            </nav>
         </div>
+    </header>
 
-        <!-- Aufgabenliste -->
-        <div class="grid tasks-grid">
-            <article class="feature task-card">
-                <h3>📘 Mathe Übungsblatt 4</h3>
-                <p class="muted task-text-muted">
-                    Fällig: 22. Okt 2025 • Status: <strong>Offen</strong>
-                </p>
-                <p class="task-body">
-                    Löse Aufgaben 3–6 im Kapitel 5. Ergebnisse hochladen im Moodle.
-                </p>
-                <div class="task-actions">
-                    <button class="btn btn-primary" disabled>Als erledigt markieren</button>
-                    <button class="btn btn-ghost" disabled>Bearbeiten</button>
+    <main class="section">
+        <div class="container tasks-page-container">
+            <div style="display:flex; align-items:flex-start; justify-content:space-between; gap:14px; flex-wrap:wrap;">
+                <div>
+                    <h1 class="page-title" style="margin-bottom:6px;">Aufgaben</h1>
+                    <p class="muted page-subtitle" style="margin:0;">
+                        Wähle eine Gruppe aus, um Aufgaben zu sehen/zu bearbeiten.
+                    </p>
                 </div>
-            </article>
 
-            <article class="feature task-card">
-                <h3>💻 SE-Projekt – Designphase</h3>
-                <p class="muted task-text-muted">
-                    Fällig: 28. Okt 2025 • Status: <strong>In Bearbeitung</strong>
-                </p>
-                <p class="task-body">
-                    Arbeite am UI-Design für die App. Präsentation vorbereiten.
-                </p>
-                <div class="task-actions">
-                    <button class="btn btn-primary" disabled>Als erledigt markieren</button>
-                    <button class="btn btn-ghost" disabled>Bearbeiten</button>
+                <div style="display:flex; gap:10px; align-items:center; flex-wrap:wrap;">
+                    <select id="groupSelect" class="btn" style="min-width:220px;">
+            <option value="">— Gruppe wählen —</option>
+          </select>
+                    <a id="createTaskBtn" class="btn btn-primary" href="#">+ Aufgabe erstellen</a>
                 </div>
-            </article>
+            </div>
 
-            <article class="feature task-card" style="opacity: 0.7;">
-                <h3>🧠 Datenbanken Test</h3>
-                <p class="muted task-text-muted">
-                    Fällig: 30. Okt 2025 • Status: <strong>Erledigt</strong>
-                </p>
-                <p class="task-body">
-                    Kapitel 4–6 wiederholen und Testfragen aus Moodle lösen.
-                </p>
-                <div class="task-actions">
-                    <button class="btn btn-primary" disabled>Erledigt</button>
-                    <button class="btn btn-ghost" disabled>Bearbeiten</button>
+            <p id="groupInfo" class="muted" style="margin-top:10px;"></p>
+
+            <div id="tasksContainer" class="grid tasks-grid" style="margin-top:14px;"></div>
+        </div>
+
+        <!-- Edit Modal -->
+        <div id="editModal" class="modal" style="display:none;">
+            <div class="feature" style="max-width:520px; margin:60px auto; padding:18px;">
+                <h3 style="margin-top:0;">Aufgabe bearbeiten</h3>
+
+                <input id="editTitle" placeholder="Titel" />
+                <textarea id="editDesc" placeholder="Beschreibung" style="margin-top:10px;"></textarea>
+
+                <!-- ✅ NEU: Tags -->
+                <label class="muted" style="display:block; margin-top:10px;">Tags (optional)</label>
+                <input id="editTags" placeholder="z.B. Uni, Dringend" />
+
+                <label class="muted" style="display:block; margin-top:10px;">Deadline</label>
+                <input type="datetime-local" id="editDueAt" />
+
+                <label class="muted" style="display:block; margin-top:10px;">Status</label>
+                <select id="editStatus">
+          <option value="OPEN">open</option>
+          <option value="IN_PROGRESS">in progress</option>
+          <option value="DONE">done</option>
+        </select>
+
+                <div style="display:flex; justify-content:flex-end; gap:10px; margin-top:14px;">
+                    <button class="btn" id="editCancel">Abbrechen</button>
+                    <button class="btn btn-primary" id="editSave">Speichern</button>
                 </div>
-            </article>
+            </div>
         </div>
 
-        <!-- CTA -->
-        <div class="tasks-cta">
-            <button class="btn btn-primary" disabled>+ Neue Aufgabe erstellen</button>
-        </div>
-    </div>
-</main>
+    </main>
 
-<footer class="site-footer">
-    <div class="container footer-inner">
-        <div class="brand-row">
-            <img src="../images/Logo.png" alt="StudyTasks Logo" class="brand-logo small" />
+    <footer class="site-footer">
+        <div class="container footer-inner">
+            <div class="brand-row">
+                <img src="../images/Logo.png" alt="StudyTasks Logo" class="brand-logo small" />
+            </div>
+            <p class="muted">© <span id="y"></span> StudyTasks</p>
         </div>
-        <p class="muted">© <span id="y"></span> StudyTasks. FH-freundlich, einfach, fokussiert.</p>
-    </div>
-</footer>
+    </footer>
 
-<script>
-    document.getElementById("y").textContent = new Date().getFullYear();
-</script>
+    <script>
+        document.getElementById("y").textContent = new Date().getFullYear();
+    </script>
+
+    <script src="js/auth-check.js"></script>
+    <script src="js/api.js"></script>
+    <script src="js/groups.js"></script>
+    <script src="js/tasks.js"></script>
+
+    <script>
+        function escapeHtml(str) {
+            return String(str)
+                .replaceAll("&", "&amp;")
+                .replaceAll("<", "&lt;")
+                .replaceAll(">", "&gt;")
+                .replaceAll('"', "&quot;")
+                .replaceAll("'", "&#039;");
+        }
+
+        function toDbDatetime(datetimeLocalValue) {
+            return datetimeLocalValue.replace("T", " ") + ":00";
+        }
+
+        function fromDbToDatetimeLocal(dbValue) {
+            if (!dbValue) return "";
+            return String(dbValue).replace(" ", "T").slice(0, 16);
+        }
+
+        function formatDue(dbValue) {
+            if (!dbValue) return "—";
+            return String(dbValue).replace("T", " ").slice(0, 16);
+        }
+
+        function setCreateBtn(groupId) {
+            var btn = document.getElementById("createTaskBtn");
+            if (!groupId) {
+                btn.href = "#";
+                btn.setAttribute("aria-disabled", "true");
+                btn.style.opacity = ".5";
+                btn.style.pointerEvents = "none";
+                return;
+            }
+            btn.removeAttribute("aria-disabled");
+            btn.style.opacity = "1";
+            btn.style.pointerEvents = "auto";
+            btn.href = "aufgabe-erstellen.html?group_id=" + encodeURIComponent(groupId);
+        }
+
+        async function claimTask(taskId) {
+            return apiRequest("/tasks/claimTask.php", "POST", {
+                task_id: taskId
+            });
+        }
+
+        async function unclaimTask(taskId) {
+            return apiRequest("/tasks/unclaimTask.php", "POST", {
+                task_id: taskId
+            });
+        }
+
+        var currentEditTask = null;
+
+        function openEditModal(task) {
+            currentEditTask = task;
+
+            document.getElementById("editTitle").value = task.title || "";
+            document.getElementById("editDesc").value = task.description || "";
+            document.getElementById("editDueAt").value = fromDbToDatetimeLocal(task.due_at || "");
+            document.getElementById("editStatus").value = (task.status || "OPEN");
+
+            // ✅ Tags aus Task übernehmen (wenn Backend "tags" liefert)
+            document.getElementById("editTags").value = task.tags ? String(task.tags) : "";
+
+            document.getElementById("editModal").style.display = "block";
+        }
+
+        function closeEditModal() {
+            document.getElementById("editModal").style.display = "none";
+            currentEditTask = null;
+        }
+
+        document.getElementById("editCancel").onclick = closeEditModal;
+
+        (async function() {
+            var params = new URLSearchParams(window.location.search);
+            var groupIdFromUrl = params.get("group_id") || "";
+
+            var groupSelect = document.getElementById("groupSelect");
+            var groupInfo = document.getElementById("groupInfo");
+            var container = document.getElementById("tasksContainer");
+
+            var me = null;
+            try {
+                me = await apiRequest("/auth/me.php", "GET");
+            } catch (e) {
+                console.error(e);
+            }
+
+            async function renderTasks(groupId) {
+                container.innerHTML = "";
+
+                if (!groupId) {
+                    container.innerHTML = '<p class="muted">Bitte wähle eine Gruppe aus.</p>';
+                    return;
+                }
+
+                var tasks = [];
+                try {
+                    tasks = await loadTasksForGroup(groupId);
+                } catch (e) {
+                    console.error(e);
+                    container.innerHTML = '<p class="muted">Fehler beim Laden der Tasks.</p>';
+                    return;
+                }
+
+                if (!Array.isArray(tasks) || tasks.length === 0) {
+                    container.innerHTML = '<p class="muted">Keine Aufgaben in dieser Gruppe.</p>';
+                    return;
+                }
+
+                tasks.forEach(function(t) {
+                    // ✅ Browser-sicher statt ?? und ?.
+                    var title = (t && t.title) ? t.title : "Ohne Titel";
+                    var status = (t && t.status) ? t.status : "OPEN";
+                    var due = formatDue(t ? t.due_at : null);
+
+                    var next =
+                        status === "OPEN" ? "IN_PROGRESS" :
+                        status === "IN_PROGRESS" ? "DONE" :
+                        "DONE";
+
+                    var respId = (t && t.responsible_user_id) ? t.responsible_user_id : null;
+                    var meId = (me && me.id) ? me.id : null;
+
+                    var claimArea = "";
+                    if (!respId) {
+                        claimArea = '<button class="btn" data-act="claim">Claim</button>';
+                    } else if (meId && String(respId) === String(meId)) {
+                        claimArea = '<button class="btn" data-act="unclaim">Unclaim</button>';
+                    } else {
+                        claimArea = '<span class="muted">Geclaimt</span>';
+                    }
+
+                    var el = document.createElement("article");
+                    el.className = "feature";
+
+                    var responsibleName = t ? t.responsible_name : null;
+
+                    // ✅ Tags Anzeige (wenn Backend tags liefert)
+                    var tagsLine = "";
+                    if (t && t.tags) {
+                        tagsLine = '<p class="muted" style="margin:0 0 4px 0;">Tags: ' + escapeHtml(t.tags) + '</p>';
+                    }
+
+                    el.innerHTML =
+                        '<div style="display:flex; align-items:flex-start; justify-content:space-between; gap:12px; flex-wrap:wrap;">' +
+                        '<div>' +
+                        '<h3 style="margin:0 0 6px 0;">' + escapeHtml(title) + '</h3>' +
+                        '<p class="muted" style="margin:0 0 4px 0;">Deadline: ' + escapeHtml(due) + '</p>' +
+                        '<p class="muted" style="margin:0 0 4px 0;">Status: ' + escapeHtml(status) + '</p>' +
+                        tagsLine +
+                        '<p class="muted" style="margin:0;">Verantwortlich: ' +
+                        (respId ?
+                            (meId && String(respId) === String(meId) ?
+                                "Du" :
+                                escapeHtml(responsibleName || "Unbekannt")) :
+                            "Niemand"
+                        ) +
+                        '</p>' +
+                        '</div>' +
+
+                        '<div style="display:flex; gap:10px; align-items:center; flex-wrap:wrap;">' +
+                        claimArea +
+                        '<button class="btn" data-act="edit">Edit</button>' +
+                        '<button class="btn" data-act="delete">Delete</button>' +
+                        '<button class="btn btn-primary" data-act="next">Status →</button>' +
+                        '</div>' +
+                        '</div>';
+
+                    var claimBtn = el.querySelector('[data-act="claim"]');
+                    if (claimBtn) {
+                        claimBtn.onclick = async function() {
+                            try {
+                                await claimTask(t.id);
+                                await renderTasks(groupId);
+                            } catch (e) {
+                                alert((e && e.message) ? e.message : "Claim nicht möglich");
+                            }
+                        };
+                    }
+
+                    var unclaimBtn = el.querySelector('[data-act="unclaim"]');
+                    if (unclaimBtn) {
+                        unclaimBtn.onclick = async function() {
+                            try {
+                                await unclaimTask(t.id);
+                                await renderTasks(groupId);
+                            } catch (e) {
+                                alert((e && e.message) ? e.message : "Unclaim nicht möglich");
+                            }
+                        };
+                    }
+
+                    el.querySelector('[data-act="edit"]').onclick = function() {
+                        openEditModal(t);
+                    };
+
+                    el.querySelector('[data-act="delete"]').onclick = async function() {
+                        if (!confirm("Task wirklich löschen?")) return;
+                        try {
+                            await deleteTask(t.id);
+                            await renderTasks(groupId);
+                        } catch (e) {
+                            alert((e && e.message) ? e.message : "Löschen fehlgeschlagen");
+                        }
+                    };
+
+                    el.querySelector('[data-act="next"]').onclick = async function() {
+                        try {
+                            await updateTask(t.id, {
+                                status: next
+                            });
+                            await renderTasks(groupId);
+                        } catch (e) {
+                            alert((e && e.message) ? e.message : "Status-Update fehlgeschlagen");
+                        }
+                    };
+
+                    container.appendChild(el);
+                });
+            }
+
+            document.getElementById("editSave").onclick = async function() {
+                if (!currentEditTask) return;
+
+                var title = document.getElementById("editTitle").value.trim();
+                var desc = document.getElementById("editDesc").value.trim();
+                var dueLocal = document.getElementById("editDueAt").value;
+                var status = document.getElementById("editStatus").value;
+
+                // ✅ NEU: Tags aus Input holen
+                var tagsRaw = document.getElementById("editTags").value.trim();
+                var tagsArr = [];
+                if (tagsRaw) {
+                    tagsArr = tagsRaw.split(",").map(function(x) {
+                        return x.trim();
+                    }).filter(function(x) {
+                        return x !== "";
+                    });
+                }
+
+                if (!title) return alert("Titel fehlt");
+                if (!dueLocal) return alert("Deadline fehlt");
+
+                try {
+                    await updateTask(currentEditTask.id, {
+                        title: title,
+                        description: desc,
+                        due_at: toDbDatetime(dueLocal),
+                        status: status,
+                        tags: tagsArr // ✅ Backend erwartet tags (Array)
+                    });
+                    closeEditModal();
+                    await renderTasks(groupSelect.value);
+                } catch (e) {
+                    alert((e && e.message) ? e.message : "Update fehlgeschlagen");
+                }
+            };
+
+            var groups = [];
+            try {
+                groups = await loadMyGroups();
+            } catch (e) {
+                console.error(e);
+                groupInfo.textContent = "Gruppen konnten nicht geladen werden.";
+            }
+
+            if (Array.isArray(groups) && groups.length > 0) {
+                groupSelect.insertAdjacentHTML(
+                    "beforeend",
+                    groups.map(function(g) {
+                        return '<option value="' + escapeHtml(g.id) + '">' + escapeHtml(g.name) + '</option>';
+                    }).join("")
+                );
+                groupInfo.textContent = "";
+            } else {
+                groupInfo.textContent = "Keine Gruppen vorhanden.";
+            }
+
+            setCreateBtn(groupIdFromUrl);
+            if (groupIdFromUrl) {
+                groupSelect.value = groupIdFromUrl;
+                await renderTasks(groupIdFromUrl);
+            } else {
+                await renderTasks(null);
+            }
+
+            groupSelect.addEventListener("change", async function() {
+                var gid = groupSelect.value;
+                setCreateBtn(gid);
+
+                if (!gid) {
+                    history.replaceState(null, "", "aufgaben.html");
+                    await renderTasks(null);
+                    return;
+                }
+
+                history.replaceState(null, "", "aufgaben.html?group_id=" + encodeURIComponent(gid));
+                await renderTasks(gid);
+            });
+        })();
+    </script>
+    <script src="js/admin-nav.js"></script>
+
 </body>
 
 </html>

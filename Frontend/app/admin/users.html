@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="de">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>User verwalten – Admin</title>
+
+    <link rel="stylesheet" href="../../src/styles.css" />
+</head>
+
+<body>
+
+    <header class="site-header">
+        <div class="container header-inner">
+            <a class="brand" href="dashboard.html">
+                <img src="../../images/Logo.png" class="brand-logo" />
+            </a>
+
+            <nav class="nav">
+                <ul class="nav-list">
+                    <li><a href="dashboard.html">Admin</a></li>
+                    <li><a href="users.html" class="active">User</a></li>
+                    <li><a href="contacts.html">Kontakt</a></li>
+                    <li><a href="../logout.html">Logout</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="section">
+        <div class="container">
+            <h1>Userverwaltung</h1>
+
+            <table class="table" style="margin-top:20px;">
+                <thead>
+                    <tr>
+                        <th>ID</th>
+                        <th>Name</th>
+                        <th>E-Mail</th>
+                        <th>Rolle</th>
+                        <th>Aktionen</th>
+                    </tr>
+                </thead>
+                <tbody id="userTable"></tbody>
+            </table>
+        </div>
+    </main>
+
+    <!-- WICHTIG: richtiger Pfad -->
+    <script src="../js/api.js"></script>
+
+    <script>
+        async function loadUsers() {
+            const users = await apiRequest("/admin/users.php");
+            const tbody = document.getElementById("userTable");
+            tbody.innerHTML = "";
+
+            users.forEach(u => {
+                const tr = document.createElement("tr");
+                tr.innerHTML = `
+            <td>${u.id}</td>
+            <td>${u.display_name}</td>
+            <td>${u.email}</td>
+            <td>${u.role}</td>
+            <td>
+                <button class="btn" onclick="changePassword(${u.id})">Passwort</button>
+                <button class="btn btn-danger" onclick="deleteUser(${u.id})">Löschen</button>
+            </td>
+        `;
+                tbody.appendChild(tr);
+            });
+        }
+
+        async function changePassword(userId) {
+            const pw = prompt("Neues Passwort (mind. 8 Zeichen):");
+            if (!pw || pw.length < 8) {
+                alert("Ungültiges Passwort");
+                return;
+            }
+
+            await apiRequest("/admin/update-password.php", "POST", {
+                user_id: userId,
+                new_password: pw
+            });
+
+            alert("Passwort geändert");
+        }
+
+        async function deleteUser(userId) {
+            if (!confirm("User wirklich löschen? ALLE Daten gehen verloren!")) return;
+
+            await apiRequest("/admin/delete-user.php", "POST", {
+                user_id: userId
+            });
+
+            loadUsers();
+        }
+
+        loadUsers();
+    </script>
+
+</body>
+
+</html>

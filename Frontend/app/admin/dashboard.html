@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="de">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Admin Dashboard – StudyTasks</title>
+
+    <link rel="stylesheet" href="../../src/styles.css" />
+    <link rel="icon" href="../../images/Logo.png" />
+</head>
+
+<body>
+
+    <header class="site-header">
+        <div class="container header-inner">
+            <a class="brand" href="../dashboard.html">
+                <img src="../../images/Logo.png" class="brand-logo" />
+            </a>
+
+            <nav class="nav">
+                <ul class="nav-list">
+                    <li><a href="dashboard.html" class="active">Admin</a></li>
+                    <li><a href="users.html">User</a></li>
+                    <li><a href="contacts.html">Kontakt</a></li>
+                    <li><a href="../logout.html">Logout</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="section">
+        <div class="container">
+            <h1>Admin Dashboard</h1>
+            <p class="muted">
+                Verwaltung von Usern, Passwörtern und Kontaktanfragen.
+            </p>
+
+            <div class="grid" style="margin-top:20px;">
+                <a href="users.html" class="feature">
+                    <h3>User verwalten</h3>
+                    <p>Alle Benutzer anzeigen, Passwörter ändern, User löschen.</p>
+                </a>
+
+                <a href="contacts.html" class="feature">
+                    <h3>Kontaktanfragen</h3>
+                    <p>Nachrichten aus dem Kontaktformular ansehen.</p>
+                </a>
+            </div>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container footer-inner">
+            <p class="muted">© 2026 StudyTasks – Adminbereich</p>
+        </div>
+    </footer>
+
+    <!-- 🔑 BASIS -->
+    <script src="../js/auth-check.js"></script>
+    <script src="../js/api.js"></script>
+
+    <!-- 🔒 ADMIN-ZUGRIFF -->
+    <script>
+        (async() => {
+            try {
+                const me = await apiRequest("/auth/me.php", "GET");
+
+                if (me.role !== "ADMIN") {
+                    alert("Kein Zugriff");
+                    window.location.href = "../dashboard.html";
+                }
+            } catch (e) {
+                window.location.href = "../login.html";
+            }
+        })();
+    </script>
+
+</body>
+
+</html>
