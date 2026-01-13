@@ -5,123 +5,99 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Statistik – StudyTasks</title>
-    <meta name="description" content="Analysiere deine Produktivität mit StudyTasks: Aufgabenfortschritt, Fächerverteilung und Wochenaktivität im Überblick." />
 
-    <!-- Schrift & Styles -->
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../src/styles.css" />
-    <link rel="icon" href="../images/Logo.png" />
 </head>
 
 <body>
-<header class="site-header">
-    <div class="container header-inner">
-        <a class="brand" href="dashboard.html">
-            <img src="../images/Logo.png" alt="StudyTasks Logo" class="brand-logo" />
-        </a>
 
-        <nav class="nav">
-            <ul class="nav-list">
-                <li><a href="dashboard.html">Dashboard</a></li>
-                <li><a href="aufgaben.html">Aufgaben</a></li>
-                <li><a href="kalender.html">Kalender</a></li>
-                <li><a href="gruppen.html">Gruppen</a></li>
-                <li><a href="tags.html">Tags</a></li>
-                <li><a href="statistik.html" class="active">Statistik</a></li>
-                <li><a href="profil.html">Profil</a></li>
-                <li><a href="logout.html">Logout</a></li>
-            </ul>
-        </nav>
-    </div>
-</header>
+    <header class="site-header">
+        <div class="container header-inner">
+            <a class="brand" href="dashboard.html">
+                <img src="../images/Logo.png" class="brand-logo" />
+            </a>
 
-<main class="section">
-    <div class="container stats-page-container">
-        <h1 class="page-title">Meine Statistik</h1>
-        <p class="muted page-subtitle-lg">
-            Behalte deine Studienleistung im Blick – Fortschritt, Aktivität und Aufgabenschwerpunkte auf einen Blick.
-        </p>
-
-        <!-- Übersicht -->
-        <section class="grid stats-grid">
-            <article class="feature" style="text-align:center;">
-                <h3>📘 Erledigte Aufgaben</h3>
-                <p style="font-size:2rem; font-weight:600; margin:10px 0;">48</p>
-                <p class="muted">von insgesamt 65 Aufgaben</p>
-            </article>
-
-            <article class="feature" style="text-align:center;">
-                <h3>🧠 Aktive Fächer</h3>
-                <p style="font-size:2rem; font-weight:600; margin:10px 0;">6</p>
-                <p class="muted">mit laufenden Projekten</p>
-            </article>
-
-            <article class="feature" style="text-align:center;">
-                <h3>🔥 Wochenaktivität</h3>
-                <p style="font-size:2rem; font-weight:600; margin:10px 0;">87%</p>
-                <p class="muted">Aufgaben rechtzeitig abgeschlossen</p>
-            </article>
-        </section>
-
-        <!-- Diagramme -->
-        <section class="mt-50">
-            <h2 class="page-title" style="font-size:1.5rem;">Visuelle Auswertung</h2>
-            <p class="muted page-subtitle">
-                (Platzhalter – in einer späteren Version werden hier interaktive Diagramme angezeigt.)
-            </p>
-
-            <!-- Balkendiagramm -->
-            <div class="chart-card">
-                <h3>📅 Wöchentliche Aufgabenaktivität</h3>
-                <div class="chart-bar-row">
-                    <div class="bar" style="height:60%; width:12%; background:var(--brand); border-radius:6px;" title="Mo: 6 Aufgaben"></div>
-                    <div class="bar" style="height:75%; width:12%; background:var(--brand); border-radius:6px;" title="Di: 8 Aufgaben"></div>
-                    <div class="bar" style="height:90%; width:12%; background:var(--brand); border-radius:6px;" title="Mi: 10 Aufgaben"></div>
-                    <div class="bar" style="height:50%; width:12%; background:var(--brand); border-radius:6px;" title="Do: 5 Aufgaben"></div>
-                    <div class="bar" style="height:80%; width:12%; background:var(--brand); border-radius:6px;" title="Fr: 9 Aufgaben"></div>
-                    <div class="bar" style="height:30%; width:12%; background:#ddd; border-radius:6px;" title="Sa: 3 Aufgaben"></div>
-                    <div class="bar" style="height:20%; width:12%; background:#ddd; border-radius:6px;" title="So: 2 Aufgaben"></div>
-                </div>
-            </div>
-
-            <!-- Kreisdiagramm -->
-            <div class="chart-card">
-                <h3>🏷 Aufgabenverteilung nach Fächern</h3>
-                <div class="pie-wrapper">
-                    <div class="pie"></div>
-                    <ul class="pie-legend">
-                        <li><span style="color:#2d7f74;">●</span> SE-Projekt – 40%</li>
-                        <li><span style="color:#e6b800;">●</span> Mathematik – 30%</li>
-                        <li><span style="color:#b76db7;">●</span> Präsentation – 20%</li>
-                        <li><span style="color:#ccc;">●</span> Sonstiges – 10%</li>
-                    </ul>
-                </div>
-            </div>
-        </section>
-
-        <!-- Zusammenfassung -->
-        <section class="stats-summary">
-            <h2>Gesamtbewertung</h2>
-            <p class="muted">
-                Du arbeitest konstant und zuverlässig. Dein Hauptfokus liegt auf SE-Projekt und Mathematik, mit hoher Aktivität unter der Woche. Halte diesen Rhythmus, um deine Deadlines weiterhin souverän einzuhalten.
-            </p>
-        </section>
-    </div>
-</main>
-
-<footer class="site-footer">
-    <div class="container footer-inner">
-        <div class="brand-row">
-            <img src="../images/Logo.png" alt="StudyTasks Logo" class="brand-logo small" />
+            <nav class="nav">
+                <ul class="nav-list">
+                    <li><a href="dashboard.html">Dashboard</a></li>
+                    <li><a href="aufgaben.html">Aufgaben</a></li>
+                    <li><a href="kalender.html">Kalender</a></li>
+                    <li><a href="gruppen.html">Gruppen</a></li>
+                    <li><a href="statistik.html" class="active">Statistik</a></li>
+                    <li><a href="logout.html">Logout</a></li>
+                </ul>
+            </nav>
         </div>
-        <p class="muted">© <span id="y"></span> StudyTasks. FH-freundlich, einfach, fokussiert.</p>
-    </div>
-</footer>
+    </header>
 
-<script>
-    document.getElementById("y").textContent = new Date().getFullYear();
-</script>
+    <main class="section">
+        <div class="container" style="max-width:900px;">
+            <h1 class="page-title">Aufgabenstatistik</h1>
+
+            <div class="grid" style="margin-top:32px;">
+                <div class="feature">
+                    <h3>Gesamt</h3>
+                    <p id="statTotal">–</p>
+                </div>
+
+                <div class="feature">
+                    <h3>Offen</h3>
+                    <p id="statTodo">–</p>
+                </div>
+
+                <div class="feature">
+                    <h3>In Bearbeitung</h3>
+                    <p id="statInProgress">–</p>
+                </div>
+
+                <div class="feature">
+                    <h3>Erledigt</h3>
+                    <p id="statDone">–</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <p class="muted">© <span id="y"></span> StudyTasks</p>
+    </footer>
+
+    <script>
+        document.getElementById("y").textContent = new Date().getFullYear();
+    </script>
+
+    <script src="js/auth-check.js"></script>
+    <script src="js/api.js"></script>
+    <script src="js/statistik.js"></script>
+
+    <script>
+        (async() => {
+            const params = new URLSearchParams(window.location.search);
+            const groupId = params.get("group_id");
+
+            if (!groupId) {
+                alert("Keine Gruppe ausgewählt");
+                window.location.href = "gruppen.html";
+                return;
+            }
+
+            try {
+                const stats = await loadStatistics(groupId);
+
+                document.getElementById("statTotal").textContent = stats.total;
+                document.getElementById("statTodo").textContent = stats.todo;
+                document.getElementById("statInProgress").textContent = stats.inProgress;
+                document.getElementById("statDone").textContent = stats.done;
+            } catch (e) {
+                alert("Statistik konnte nicht geladen werden.");
+                console.error(e);
+            }
+        })();
+    </script>
+
+    <script src="js/admin-nav.js"></script>
+
+
 </body>
 
 </html>

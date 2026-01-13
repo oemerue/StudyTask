@@ -409,6 +409,8 @@ body {
         color: var(--ink);
     }
 }
+
+
 /* ===== Utility-Klassen für App-Seiten ===== */
 
 .page-title {
@@ -457,6 +459,7 @@ body {
     margin-top: 50px;
 }
 
+
 /* Formulare & Inputs */
 
 .form-stacked {
@@ -494,6 +497,7 @@ body {
     min-width: 220px;
 }
 
+
 /* Grids & Karten */
 
 .grid-auto-cards {
@@ -509,6 +513,7 @@ body {
     gap: 24px;
 }
 
+
 /* Buttons-Reihen */
 
 .btn-row {
@@ -516,6 +521,7 @@ body {
     display: flex;
     gap: 8px;
 }
+
 
 /* ===== Logout-Seite ===== */
 
@@ -541,6 +547,7 @@ body {
     margin-top: 16px;
 }
 
+
 /* ===== Dashboard ===== */
 
 .dashboard-stats-grid {
@@ -552,6 +559,7 @@ body {
 .dashboard-deadlines-grid {
     gap: 14px;
 }
+
 
 /* ===== Kalender ===== */
 
@@ -613,6 +621,7 @@ body {
     background-color: #d9efeb;
 }
 
+
 /* ===== Tags ===== */
 
 .tags-page-container {
@@ -660,6 +669,7 @@ body {
     margin-top: 40px;
 }
 
+
 /* ===== Gruppen ===== */
 
 .groups-page-container {
@@ -697,6 +707,7 @@ body {
     gap: 10px;
 }
 
+
 /* ===== Profil ===== */
 
 .profile-page-container {
@@ -723,6 +734,7 @@ body {
     margin-top: 50px;
     text-align: center;
 }
+
 
 /* ===== Aufgaben ===== */
 
@@ -757,6 +769,7 @@ body {
     text-align: center;
     margin-top: 40px;
 }
+
 
 /* ===== Statistik ===== */
 
@@ -815,4 +828,384 @@ body {
 .stats-summary p {
     max-width: 700px;
     margin: 10px auto;
+}
+
+
+/* ==============================
+   DASHBOARD
+   ============================== */
+
+.dashboard {
+    background: #f6f7f9;
+}
+
+
+/* HEADER */
+
+.dashboard-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+/* KPI CARDS */
+
+.kpi-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+
+.kpi-card {
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 24px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+    transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.kpi-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
+}
+
+.kpi-card.warning {
+    border-left: 4px solid #e5533d;
+}
+
+.kpi-value {
+    font-size: 32px;
+    font-weight: 700;
+    color: #1f2933;
+}
+
+.kpi-label {
+    margin-top: 6px;
+    font-size: 14px;
+    color: #6b7280;
+}
+
+
+/* MAIN GRID */
+
+.dashboard-grid {
+    display: grid;
+    grid-template-columns: 2.5fr 1fr;
+    gap: 24px;
+}
+
+.dashboard-column.small {
+    max-width: 360px;
+}
+
+
+/* CARDS */
+
+.card {
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+}
+
+
+/* TASK LIST */
+
+.task-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.task-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 14px 0;
+    border-bottom: 1px solid #eceff3;
+}
+
+.task-item:last-child {
+    border-bottom: none;
+}
+
+.task-title {
+    font-weight: 500;
+    color: #1f2933;
+}
+
+.task-meta {
+    font-size: 13px;
+}
+
+
+/* WEEK LIST */
+
+.week-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.week-list li {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0;
+    border-bottom: 1px solid #eceff3;
+}
+
+.week-list li:last-child {
+    border-bottom: none;
+}
+
+
+/* GROUPS */
+
+.group-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+    gap: 16px;
+}
+
+.group-card {
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 16px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+}
+
+.group-card strong {
+    display: block;
+    margin-bottom: 4px;
+}
+
+
+/* RESPONSIVE */
+
+@media (max-width: 900px) {
+    .kpi-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .dashboard-grid {
+        grid-template-columns: 1fr;
+    }
+    .dashboard-column.small {
+        max-width: none;
+    }
+}
+
+@media (max-width: 500px) {
+    .kpi-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+
+/* =========================
+   KALENDER – PRO FINAL
+   ========================= */
+
+.calendar-wrapper {
+    overflow-x: auto;
+    padding: 12px 0;
+}
+
+
+/* Wochen-Grid */
+
+.calendar-grid {
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: 340px;
+    /* ← HIER ist der Schlüssel */
+    gap: 24px;
+    padding: 24px;
+}
+
+
+/* Tages-Spalte */
+
+.calendar-day {
+    background: #f9fafb;
+    border-radius: 16px;
+    padding: 16px;
+    min-height: 320px;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    border: 1px solid #e5e7eb;
+}
+
+
+/* Kopf eines Tages */
+
+.calendar-day-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    padding-bottom: 8px;
+    border-bottom: 1px solid #e5e7eb;
+}
+
+.calendar-day-header strong {
+    font-size: 15px;
+}
+
+.calendar-day-header span {
+    font-size: 12px;
+    color: #6b7280;
+}
+
+
+/* Task Card */
+
+.calendar-task {
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 12px 14px;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.06);
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+
+/* Titel */
+
+.calendar-task strong {
+    font-size: 14px;
+    color: #111827;
+}
+
+
+/* Meta-Infos */
+
+.calendar-task .meta {
+    font-size: 12px;
+    color: #6b7280;
+    line-height: 1.4;
+}
+
+
+/* Status-Leiste links */
+
+.calendar-task[data-status="OPEN"] {
+    border-left: 4px solid #3b82f6;
+}
+
+.calendar-task[data-status="IN_PROGRESS"] {
+    border-left: 4px solid #f59e0b;
+}
+
+.calendar-task[data-status="DONE"] {
+    border-left: 4px solid #10b981;
+    opacity: 0.75;
+}
+
+
+/* Buttons ruhiger */
+
+.calendar-task button {
+    align-self: flex-start;
+    margin-top: 6px;
+    padding: 6px 10px;
+    font-size: 12px;
+    border-radius: 8px;
+}
+
+
+/* Keine Tasks */
+
+.calendar-empty {
+    font-size: 13px;
+    color: #9ca3af;
+    text-align: center;
+    padding: 30px 0;
+}
+
+.task-tags {
+    margin-top: 6px;
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+}
+
+.task-tag {
+    font-size: 11px;
+    padding: 3px 8px;
+    border-radius: 999px;
+    color: white;
+    font-weight: 500;
+}
+
+
+/* ---------- Admin Kontaktanfragen ---------- */
+
+.table-wrapper {
+    margin-top: 24px;
+    background: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.06);
+    overflow-x: auto;
+}
+
+.admin-table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 15px;
+}
+
+.admin-table thead {
+    background: #f5f7f6;
+}
+
+.admin-table th {
+    text-align: left;
+    padding: 14px 16px;
+    font-weight: 600;
+    color: #2f3a37;
+    border-bottom: 1px solid #e3e7e5;
+    white-space: nowrap;
+}
+
+.admin-table td {
+    padding: 14px 16px;
+    vertical-align: top;
+    border-bottom: 1px solid #eef1ef;
+    color: #333;
+    line-height: 1.5;
+}
+
+.admin-table tr:hover {
+    background: #fafcfc;
+}
+
+
+/* Spaltenbreiten */
+
+.admin-table td:nth-child(1),
+.admin-table th:nth-child(1) {
+    width: 170px;
+    white-space: nowrap;
+    color: #666;
+    font-size: 14px;
+}
+
+.admin-table td:nth-child(2),
+.admin-table th:nth-child(2) {
+    width: 160px;
+    font-weight: 500;
+}
+
+.admin-table td:nth-child(3),
+.admin-table th:nth-child(3) {
+    width: 220px;
+    color: #2b6cb0;
+    word-break: break-all;
+}
+
+.admin-table td:nth-child(4) {
+    max-width: 500px;
+    word-break: break-word;
 }

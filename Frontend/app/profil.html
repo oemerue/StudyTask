@@ -5,9 +5,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Profil – StudyTasks</title>
-    <meta name="description" content="Verwalte dein StudyTasks-Profil: persönliche Daten, Passwort und Kontoinformationen im Überblick." />
 
-    <!-- Schrift & Styles -->
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../src/styles.css" />
@@ -15,85 +13,113 @@
 </head>
 
 <body>
-<header class="site-header">
-    <div class="container header-inner">
-        <a class="brand" href="dashboard.html">
-            <img src="../images/Logo.png" alt="StudyTasks Logo" class="brand-logo" />
-        </a>
 
-        <nav class="nav">
-            <ul class="nav-list">
-                <li><a href="../app/dashboard.html">Dashboard</a></li>
-                <li><a href="../app/aufgaben.html">Aufgaben</a></li>
-                <li><a href="../app/kalender.html">Kalender</a></li>
-                <li><a href="../app/gruppen.html">Gruppen</a></li>
-                <li><a href="../app/tags.html">Tags</a></li>
-                <li><a href="../app/statistik.html">Statistik</a></li>
-                <li><a href="../app/profil.html" class="active">Profil</a></li>
-                <li><a href="../app/logout.html">Logout</a></li>
-            </ul>
-        </nav>
-    </div>
-</header>
-
-<main class="section">
-    <div class="container profile-page-container">
-        <h1 class="page-title">Mein Profil</h1>
-        <p class="muted page-subtitle-lg">
-            Verwalte deine persönlichen Daten und dein StudyTasks-Konto.
-        </p>
-
-        <!-- Profilübersicht -->
-        <section class="feature profile-card">
-            <img src="../images/Logo.png" alt="Profilbild" class="profile-avatar" />
-            <h2>Serdar Toluay</h2>
-            <p class="muted">FH Technikum Wien – Wirtschaftsinformatik</p>
-        </section>
-
-        <!-- Profildaten -->
-        <form class="form form-stacked profile-form">
-            <label for="name">Vollständiger Name</label>
-            <input type="text" id="name" value="Serdar Toluay" class="input-standard" />
-
-            <label for="matrikelnummer">Matrikelnummer</label>
-            <input type="text" id="matrikelnummer" value="12345678" class="input-standard" />
-
-            <label for="username">FH-Benutzername</label>
-            <input type="text" id="username" value="wi00b000" class="input-standard" />
-
-            <label for="email">E-Mail-Adresse</label>
-            <input type="email" id="email" value="wi00b000@technikum-wien.at" class="input-standard" />
-
-            <label for="password">Passwort ändern</label>
-            <input type="password" id="password" placeholder="Neues Passwort eingeben" class="input-standard" />
-
-            <label for="passwordConfirm">Passwort bestätigen</label>
-            <input type="password" id="passwordConfirm" placeholder="Neues Passwort bestätigen" class="input-standard" />
-
-            <button class="btn btn-primary">Änderungen speichern</button>
-        </form>
-
-        <!-- Kontoabschnitt -->
-        <section class="account-section">
-            <h2>Konto verwalten</h2>
-            <p class="muted">Hier kannst du dein Konto bei Bedarf deaktivieren oder löschen.</p>
-            <button class="btn btn-ghost" disabled>Konto löschen</button>
-        </section>
-    </div>
-</main>
-
-<footer class="site-footer">
-    <div class="container footer-inner">
-        <div class="brand-row">
-            <img src="../images/Logo.png" alt="StudyTasks Logo" class="brand-logo small" />
+    <header class="site-header">
+        <div class="container header-inner">
+            <a class="brand" href="dashboard.html">
+                <img src="../images/Logo.png" class="brand-logo" />
+            </a>
+            <nav class="nav">
+                <ul class="nav-list">
+                    <li><a href="dashboard.html">Dashboard</a></li>
+                    <li><a href="aufgaben.html">Aufgaben</a></li>
+                    <li><a href="kalender.html">Kalender</a></li>
+                    <li><a href="gruppen.html">Gruppen</a></li>
+                    <li><a href="profil.html" class="active">Profil</a></li>
+                    <li><a href="logout.html">Logout</a></li>
+                </ul>
+            </nav>
         </div>
-        <p class="muted">© <span id="y"></span> StudyTasks. FH-freundlich, einfach, fokussiert.</p>
-    </div>
-</footer>
+    </header>
 
-<script>
-    document.getElementById("y").textContent = new Date().getFullYear();
-</script>
+    <main class="section">
+        <div class="container" style="max-width:720px;">
+            <h1 class="page-title">Mein Profil</h1>
+            <p class="muted page-subtitle">Verwalte deine persönlichen Daten.</p>
+
+            <div class="feature">
+                <form id="profileForm" class="form" style="max-width:520px; margin:auto;">
+
+                    <label>Vollständiger Name</label>
+                    <input type="text" id="name" required />
+
+                    <label>Matrikelnummer</label>
+                    <input type="text" id="matrikelnummer" required />
+
+                    <label>E-Mail-Adresse</label>
+                    <input type="email" id="email" required />
+
+                    <hr style="margin:24px 0;" />
+
+                    <label>Aktuelles Passwort <span class="muted">(Pflicht)</span></label>
+                    <input type="password" id="currentPassword" required />
+
+                    <label>Neues Passwort <span class="muted">(optional)</span></label>
+                    <input type="password" id="newPassword" />
+
+                    <label>Neues Passwort wiederholen</label>
+                    <input type="password" id="newPasswordRepeat" />
+
+                    <button class="btn btn-primary" type="submit" style="margin-top:18px;">
+                    Änderungen speichern
+                </button>
+
+                    <p class="muted" style="margin-top:14px; font-size:14px;">
+                        Aus Sicherheitsgründen müssen alle Änderungen mit dem aktuellen Passwort bestätigt werden.
+                    </p>
+                </form>
+            </div>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container footer-inner">
+            <img src="../images/Logo.png" class="brand-logo small" />
+            <p class="muted">© <span id="y"></span> StudyTasks</p>
+        </div>
+    </footer>
+
+    <script>
+        document.getElementById("y").textContent = new Date().getFullYear();
+    </script>
+
+    <script src="js/auth-check.js"></script>
+    <script src="js/api.js"></script>
+
+    <script>
+        (async() => {
+            const user = await apiRequest("/auth/me.php");
+
+            document.getElementById("name").value = user.display_name;
+            document.getElementById("email").value = user.email;
+            document.getElementById("matrikelnummer").value = user.matrikelnummer;
+        })();
+
+        document.getElementById("profileForm").addEventListener("submit", async(e) => {
+            e.preventDefault();
+
+            try {
+                await apiRequest("/user/update-profile.php", "POST", {
+                    name: document.getElementById("name").value,
+                    email: document.getElementById("email").value,
+                    matrikelnummer: document.getElementById("matrikelnummer").value,
+                    current_password: document.getElementById("currentPassword").value,
+                    new_password: document.getElementById("newPassword").value || null,
+                    new_password_repeat: document.getElementById("newPasswordRepeat").value || null
+                });
+
+                alert("Profil erfolgreich aktualisiert.");
+
+                document.getElementById("currentPassword").value = "";
+                document.getElementById("newPassword").value = "";
+                document.getElementById("newPasswordRepeat").value = "";
+
+            } catch (err) {
+                alert(err.message);
+            }
+        });
+    </script>
+
 </body>
 
 </html>

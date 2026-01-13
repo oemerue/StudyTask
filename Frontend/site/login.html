@@ -1,8 +1,3 @@
-<script type="module">
-  import { initLoginForm } from '../js/auth.js';
-  initLoginForm();
-</script>
-
 <!doctype html>
 <html lang="de">
 
@@ -10,9 +5,8 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Login – StudyTasks</title>
-    <meta name="description" content="Login zu deinem StudyTasks-Konto – greif auf deine Aufgaben, Deadlines und Projekte zu." />
+    <meta name="description" content="Login für StudyTasks" />
 
-    <!-- Schrift & Styles -->
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../src/styles.css" />
@@ -20,6 +14,7 @@
 </head>
 
 <body>
+
     <!-- Header -->
     <header class="site-header">
         <div class="container header-inner">
@@ -27,6 +22,7 @@
                 <img src="../images/Logo.png" alt="StudyTasks Logo" class="brand-logo" />
             </a>
 
+            <!-- Navigation (wie bei Registrierung) -->
             <nav class="nav">
                 <ul class="nav-list">
                     <li><a href="features.html">Funktionen</a></li>
@@ -39,55 +35,67 @@
         </div>
     </header>
 
-    <!-- Hauptinhalt -->
+    <!-- Main -->
     <main class="section">
-        <div class="container demo-card" style="max-width:500px; text-align:center;">
+        <div class="container demo-card" style="max-width:420px; text-align:center;">
             <h2>Login</h2>
-            <p class="muted" style="margin-bottom: 20px;">
-                Melde dich mit deiner <strong>FH Technikum Wien E-Mail-Adresse</strong> oder deinem
-                <strong>Benutzernamen</strong> an, um auf dein StudyTasks-Konto zuzugreifen.
-            </p>
+            <p class="muted">Melde dich mit deinem Account an.</p>
 
-            <form class="form" style="display: flex; flex-direction: column; gap: 14px; margin-top: 16px;">
-                <!-- Benutzername oder E-Mail -->
-                <label for="loginId">E-Mail-Adresse oder FH-Benutzername</label>
-                <input type="text" id="loginId" placeholder="z. B. mustermann01 oder name@technikum-wien.at" style="padding: 10px; border: 1px solid #ccc; border-radius: 10px; font-size: 15px;" />
+            <form id="loginForm" style="margin-top:24px; display:flex; flex-direction:column; gap:16px;">
+                <label for="email">E-Mail</label>
+                <input type="email" id="email" placeholder="dein.name@technikum-wien.at" required />
 
-                <!-- Passwort -->
                 <label for="password">Passwort</label>
-                <input type="password" id="password" placeholder="********" style="padding: 10px; border: 1px solid #ccc; border-radius: 10px; font-size: 15px;" />
+                <input type="password" id="password" placeholder="********" required />
 
-                <!-- Passwort vergessen -->
-                <p class="muted" style="font-size: 14px; text-align: left; margin-top: 4px;">
-                    Passwort vergessen? <a href="kontakt.html" class="footer-link">Kontaktiere uns</a>, um dein Passwort zurückzusetzen.
-                </p>
-
-                <!-- Button -->
-                <button class="btn btn-primary">Einloggen</button>
+                <button type="submit" class="btn btn-primary">Login</button>
             </form>
+
+            <p class="muted" style="margin-top:14px; font-size:14px;">
+                Noch kein Account?
+                <a href="registrierung.html"><strong>Jetzt registrieren</strong></a>
+            </p>
         </div>
     </main>
 
     <!-- Footer -->
     <footer class="site-footer">
-        <div class="container footer-inner" style="flex-direction: column; text-align: center;">
-            <div class="brand-row" style="justify-content: center; margin-bottom: 8px;">
-                <img src="../images/Logo.png" alt="StudyTasks Logo" class="brand-logo small" />
-            </div>
-
-            <p class="muted" style="margin: 4px 0;">
-                © <span id="y"></span> StudyTasks – FH-freundlich, einfach, fokussiert.
-            </p>
-
-            <div class="footer-links" style="margin-top: 6px;">
-                <a href="hilfe.html" class="footer-link">Hilfe</a> |
-                <a href="impressum.html" class="footer-link">Impressum</a>
-            </div>
+        <div class="container footer-inner" style="flex-direction:column; text-align:center;">
+            <p class="muted">© <span id="y"></span> StudyTasks</p>
         </div>
     </footer>
 
-    <!-- Script -->
-    <script src="../src/app.js"></script>
+    <script>
+        document.getElementById("y").textContent = new Date().getFullYear();
+    </script>
+
+    <script src="../app/js/api.js"></script>
+
+    <script>
+        document.getElementById("loginForm").addEventListener("submit", async e => {
+            e.preventDefault();
+
+            const email = document.getElementById("email").value.trim();
+            const password = document.getElementById("password").value;
+
+            if (!email || !password) {
+                alert("Bitte alle Felder ausfüllen");
+                return;
+            }
+
+            try {
+                await apiRequest("/auth/login.php", "POST", {
+                    email,
+                    password
+                });
+
+                window.location.href = "../app/aufgaben.html";
+            } catch (e) {
+                alert(e.message || "Login fehlgeschlagen");
+            }
+        });
+    </script>
+
 </body>
 
 </html>

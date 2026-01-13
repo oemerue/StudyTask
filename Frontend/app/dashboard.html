@@ -4,10 +4,9 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Kalender – StudyTasks</title>
-    <meta name="description" content="Behalte deine Deadlines und Studienereignisse im Kalender von StudyTasks im Blick." />
+    <title>Dashboard – StudyTasks</title>
+    <meta name="description" content="Dashboard von StudyTasks" />
 
-    <!-- Schrift & Styles -->
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../src/styles.css" />
@@ -15,7 +14,7 @@
 </head>
 
 <body>
-    <!-- Header -->
+
     <header class="site-header">
         <div class="container header-inner">
             <a class="brand" href="dashboard.html">
@@ -23,10 +22,10 @@
             </a>
 
             <nav class="nav">
-                <ul class="nav-list">
-                    <li><a href="dashboard.html">Dashboard</a></li>
+                <ul class="nav-list" id="mainNav">
+                    <li><a href="dashboard.html" class="active">Dashboard</a></li>
                     <li><a href="aufgaben.html">Aufgaben</a></li>
-                    <li><a href="kalender.html" class="active">Kalender</a></li>
+                    <li><a href="kalender.html">Kalender</a></li>
                     <li><a href="gruppen.html">Gruppen</a></li>
                     <li><a href="profil.html">Profil</a></li>
                     <li><a href="logout.html">Logout</a></li>
@@ -35,99 +34,77 @@
         </div>
     </header>
 
-    <!-- Hauptinhalt -->
-    <main class="section">
-        <div class="container calendar-container">
-            <h1 class="page-title">Mein Kalender</h1>
-            <p class="muted page-subtitle">
-                Hier findest du alle wichtigen Termine, Abgaben und Deadlines im Überblick.
-            </p>
+    <main class="section dashboard">
+        <div class="container">
 
-            <!-- Monatsübersicht -->
-            <section class="feature">
-                <div class="calendar-month-header">
-                    <h2>📆 Oktober 2025</h2>
-                    <div class="calendar-month-controls">
-                        <button class="btn btn-ghost" disabled>&lt; Vorheriger Monat</button>
-                        <button class="btn btn-ghost" disabled>Nächster Monat &gt;</button>
-                    </div>
+            <div class="dashboard-header">
+                <div>
+                    <h1 class="page-title">Dashboard</h1>
+                    <p class="muted">
+                        Überblick über deine Aufgaben, Gruppen und Deadlines.
+                    </p>
                 </div>
+            </div>
 
-                <!-- Kalendergitter -->
-                <div class="calendar-grid">
-                    <!-- Wochentage -->
-                    <div><strong>Mo</strong></div>
-                    <div><strong>Di</strong></div>
-                    <div><strong>Mi</strong></div>
-                    <div><strong>Do</strong></div>
-                    <div><strong>Fr</strong></div>
-                    <div><strong>Sa</strong></div>
-                    <div><strong>So</strong></div>
+            <!-- KPI CARDS -->
+            <section class="dashboard-kpis" style="margin-top:32px;">
+                <div class="kpi-grid">
+                    <div class="kpi-card">
+                        <div class="kpi-value">–</div>
+                        <div class="kpi-label">Offene Aufgaben</div>
+                    </div>
 
-                    <!-- Leere Kästchen -->
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div></div>
-                    <div>1</div>
-                    <div>2</div>
-                    <div>3</div>
+                    <div class="kpi-card">
+                        <div class="kpi-value">–</div>
+                        <div class="kpi-label">Meine Aufgaben</div>
+                    </div>
 
-                    <!-- Kalender-Tage -->
-                    <div class="day-cell">4</div>
-                    <div class="day-cell">5</div>
-                    <div class="day-cell highlight" title="Mathe Übungsblatt 4">6</div>
-                    <div class="day-cell">7</div>
-                    <div class="day-cell">8</div>
-                    <div class="day-cell weekend">9</div>
-                    <div class="day-cell weekend">10</div>
+                    <div class="kpi-card">
+                        <div class="kpi-value">–</div>
+                        <div class="kpi-label">Diese Woche</div>
+                    </div>
 
-                    <div class="day-cell">11</div>
-                    <div class="day-cell">12</div>
-                    <div class="day-cell highlight" title="SE-Projekt Präsentation">13</div>
-                    <div class="day-cell">14</div>
-                    <div class="day-cell">15</div>
-                    <div class="day-cell weekend">16</div>
-                    <div class="day-cell weekend">17</div>
-
-                    <div class="day-cell highlight" title="DB-Test">18</div>
-                    <div class="day-cell">19</div>
-                    <div class="day-cell">20</div>
-                    <div class="day-cell">21</div>
-                    <div class="day-cell">22</div>
-                    <div class="day-cell weekend">23</div>
-                    <div class="day-cell weekend">24</div>
-
-                    <div class="day-cell">25</div>
-                    <div class="day-cell">26</div>
-                    <div class="day-cell">27</div>
-                    <div class="day-cell highlight" title="Abgabe Projektbericht">28</div>
-                    <div class="day-cell">29</div>
-                    <div class="day-cell weekend">30</div>
-                    <div class="day-cell weekend">31</div>
+                    <div class="kpi-card warning">
+                        <div class="kpi-value">–</div>
+                        <div class="kpi-label">Überfällig</div>
+                    </div>
                 </div>
             </section>
 
-            <!-- Legende -->
-            <div class="calendar-legend">
-                <p class="muted">📘 Mathe | 💻 SE-Projekt | 🧠 Datenbanken</p>
-            </div>
+            <!-- GROUPS -->
+            <section class="dashboard-groups" style="margin-top:48px;">
+                <h2 class="section-title">Meine Gruppen</h2>
+
+                <div class="group-grid">
+                    <div class="group-card">
+                        <strong>Beispielgruppe</strong>
+                        <div class="muted">Rolle: –</div>
+                    </div>
+                </div>
+            </section>
+
         </div>
     </main>
 
-    <!-- Footer -->
     <footer class="site-footer">
         <div class="container footer-inner">
             <div class="brand-row">
                 <img src="../images/Logo.png" alt="StudyTasks Logo" class="brand-logo small" />
             </div>
-            <p class="muted">© <span id="y"></span> StudyTasks. FH-freundlich, einfach, fokussiert.</p>
+            <p class="muted">© <span id="y"></span> StudyTasks</p>
         </div>
     </footer>
 
     <script>
         document.getElementById("y").textContent = new Date().getFullYear();
     </script>
+
+    <script src="js/auth-check.js"></script>
+    <script src="js/api.js"></script>
+    <script src="js/dashboard.js"></script>
+    <script src="js/admin-nav.js"></script>
+
+
 </body>
 
 </html>

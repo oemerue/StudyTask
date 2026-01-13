@@ -4,10 +4,9 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Tags & Filter – StudyTasks</title>
-    <meta name="description" content="Organisiere deine Aufgaben mit Tags: Filtern nach Fach, Projekt oder Thema – bleib fokussiert mit StudyTasks." />
+    <title>Tags – StudyTasks</title>
+    <meta name="description" content="Verwalte und überblicke Tags in StudyTasks." />
 
-    <!-- Schrift & Styles -->
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../src/styles.css" />
@@ -15,117 +14,73 @@
 </head>
 
 <body>
-<header class="site-header">
-    <div class="container header-inner">
-        <a class="brand" href="dashboard.html">
-            <img src="../images/Logo.png" alt="StudyTasks Logo" class="brand-logo" />
-        </a>
 
-        <nav class="nav">
-            <ul class="nav-list">
-                <li><a href="dashboard.html">Dashboard</a></li>
-                <li><a href="aufgaben.html">Aufgaben</a></li>
-                <li><a href="kalender.html">Kalender</a></li>
-                <li><a href="gruppen.html">Gruppen</a></li>
-                <li><a href="tags.html" class="active">Tags</a></li>
-                <li><a href="profil.html">Profil</a></li>
-                <li><a href="logout.html">Logout</a></li>
-            </ul>
-        </nav>
-    </div>
-</header>
+    <header class="site-header">
+        <div class="container header-inner">
+            <a class="brand" href="dashboard.html">
+                <img src="../images/Logo.png" alt="StudyTasks Logo" class="brand-logo" />
+            </a>
 
-<main class="section">
-    <div class="container tags-page-container">
-        <h1 class="page-title">Tags & Filter</h1>
-        <p class="muted page-subtitle">
-            Organisiere deine Aufgaben mit Tags – für jedes Fach, Projekt oder Thema. So behältst du Ordnung und Fokus.
-        </p>
-
-        <!-- Tag-Filter Auswahl -->
-        <div class="feature tag-filter-card">
-            <form class="tag-filter-form">
-                <input type="search" placeholder="Nach Tags suchen ..." class="tag-search" disabled />
-                <button class="btn btn-primary" disabled>Filter anwenden</button>
-            </form>
+            <nav class="nav">
+                <ul class="nav-list">
+                    <li><a href="dashboard.html">Dashboard</a></li>
+                    <li><a href="aufgaben.html">Aufgaben</a></li>
+                    <li><a href="kalender.html">Kalender</a></li>
+                    <li><a href="gruppen.html">Gruppen</a></li>
+                    <li><a href="profil.html">Profil</a></li>
+                    <li><a href="logout.html">Logout</a></li>
+                </ul>
+            </nav>
         </div>
+    </header>
 
-        <!-- Tag-Übersicht -->
-        <div class="grid">
-            <!-- Tag Mathe -->
-            <article class="feature tag-card" style="border-left: 5px solid var(--brand);">
-                <h2>#Mathe</h2>
-                <p class="muted">4 Aufgaben • 2 erledigt</p>
-                <div class="progress tag-progress">
-                    <span style="width: 50%;"></span>
-                </div>
-                <p class="muted tag-progress-text">50% abgeschlossen</p>
-                <div class="tag-card-actions">
-                    <button class="btn btn-primary" disabled>Aufgaben anzeigen</button>
-                </div>
-            </article>
+    <main class="section">
+        <div class="container" style="max-width:800px;">
+            <h1 class="page-title">Tags</h1>
+            <p class="muted page-subtitle">
+                Übersicht der verwendeten Tags zur Kategorisierung von Aufgaben.
+            </p>
 
-            <!-- Tag Projektarbeit -->
-            <article class="feature tag-card" style="border-left: 5px solid #2d7f74;">
-                <h2>#Projektarbeit</h2>
-                <p class="muted">6 Aufgaben • 4 erledigt</p>
-                <div class="progress tag-progress">
-                    <span style="width: 67%;"></span>
-                </div>
-                <p class="muted tag-progress-text">67% abgeschlossen</p>
-                <div class="tag-card-actions">
-                    <button class="btn btn-primary" disabled>Aufgaben anzeigen</button>
-                </div>
-            </article>
+            <div class="grid" style="margin-top:32px;">
+                <article class="feature">
+                    <h3>#Mathe</h3>
+                    <p class="muted">Aufgaben aus dem Bereich Mathematik.</p>
+                </article>
 
-            <!-- Tag FH-Technikum -->
-            <article class="feature tag-card" style="border-left: 5px solid #d98e04;">
-                <h2>#FH-Technikum</h2>
-                <p class="muted">3 Aufgaben • 1 erledigt</p>
-                <div class="progress tag-progress">
-                    <span style="width: 33%;"></span>
-                </div>
-                <p class="muted tag-progress-text">33% abgeschlossen</p>
-                <div class="tag-card-actions">
-                    <button class="btn btn-primary" disabled>Aufgaben anzeigen</button>
-                </div>
-            </article>
+                <article class="feature">
+                    <h3>#SoftwareEngineering</h3>
+                    <p class="muted">Aufgaben rund um das SE-Projekt.</p>
+                </article>
 
-            <!-- Tag Präsentation -->
-            <article class="feature tag-card" style="border-left: 5px solid #b76db7;">
-                <h2>#Präsentation</h2>
-                <p class="muted">2 Aufgaben • 1 erledigt</p>
-                <div class="progress tag-progress">
-                    <span style="width: 50%;"></span>
-                </div>
-                <p class="muted tag-progress-text">50% abgeschlossen</p>
-                <div class="tag-card-actions">
-                    <button class="btn btn-primary" disabled>Aufgaben anzeigen</button>
-                </div>
-            </article>
+                <article class="feature">
+                    <h3>#Datenbanken</h3>
+                    <p class="muted">Aufgaben und Lerninhalte zu Datenbanken.</p>
+                </article>
+            </div>
+
+            <p class="muted" style="margin-top:24px;">
+                Die Tag-Verwaltung ist im aktuellen Projektstand als UI-Prototyp umgesetzt.
+            </p>
         </div>
+    </main>
 
-        <!-- CTA -->
-        <div class="tags-cta">
-            <button class="btn btn-primary" disabled>+ Neuen Tag hinzufügen</button>
+    <footer class="site-footer">
+        <div class="container footer-inner">
+            <div class="brand-row">
+                <img src="../images/Logo.png" alt="StudyTasks Logo" class="brand-logo small" />
+            </div>
+            <p class="muted">© <span id="y"></span> StudyTasks</p>
         </div>
-    </div>
-</main>
+    </footer>
 
-<footer class="site-footer">
-    <div class="container footer-inner">
-        <div class="brand-row">
-            <img src="../images/Logo.png" alt="StudyTasks Logo" class="brand-logo small" />
-        </div>
-        <p class="muted">
-            © <span id="y"></span> StudyTasks. FH-freundlich, einfach, fokussiert.
-        </p>
-    </div>
-</footer>
+    <script>
+        document.getElementById("y").textContent = new Date().getFullYear();
+    </script>
 
-<script>
-    document.getElementById("y").textContent = new Date().getFullYear();
-</script>
+    <!-- AUTH CHECK -->
+    <script src="js/auth-check.js"></script>
+    <script src="js/admin-nav.js"></script>
+
 </body>
 
 </html>
