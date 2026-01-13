@@ -1,0 +1,253 @@
+<!doctype html>
+<html lang="de">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Mitglieder – StudyTasks</title>
+
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../src/styles.css" />
+    <link rel="icon" href="../images/Logo.png" />
+</head>
+
+<body>
+
+    <header class="site-header">
+        <div class="container header-inner">
+            <a class="brand" href="dashboard.html">
+                <img src="../images/Logo.png" alt="StudyTasks Logo" class="brand-logo" />
+            </a>
+
+            <nav class="nav">
+                <ul class="nav-list">
+                    <li><a href="dashboard.html">Dashboard</a></li>
+                    <li><a href="aufgaben.html">Aufgaben</a></li>
+                    <li><a href="kalender.html">Kalender</a></li>
+                    <li><a href="gruppen.html" class="active">Gruppen</a></li>
+                    <li><a href="profil.html">Profil</a></li>
+                    <li><a href="logout.html">Logout</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="section">
+        <div class="container">
+            <div style="display:flex; align-items:flex-start; justify-content:space-between; gap:14px; flex-wrap:wrap;">
+                <div>
+                    <h1 class="page-title" style="margin-bottom:6px;">Mitglieder</h1>
+                    <p class="muted" id="groupMeta" style="margin:0;"></p>
+                </div>
+
+                <div style="display:flex; gap:10px; flex-wrap:wrap;">
+                    <a class="btn" id="toTasksBtn" href="#">Aufgaben</a>
+                    <button class="btn" id="leaveBtn">Gruppe verlassen</button>
+                </div>
+            </div>
+
+            <section class="feature" style="margin-top:16px;">
+                <div id="adminBox" style="display:none;">
+                    <h3 style="margin-top:0;">Admin (Owner)</h3>
+                    <p class="muted" id="joinCodeLine"></p>
+
+                    <div id="transferBox" style="margin-top:10px; display:none;">
+                        <p class="muted" style="margin:0 0 8px 0;">
+                            Wenn du als Admin die Gruppe verlassen willst, musst du zuerst Ownership übertragen.
+                        </p>
+                        <div style="display:flex; gap:10px; flex-wrap:wrap;">
+                            <select id="newAdminSelect"></select>
+                            <button class="btn btn-primary" id="transferBtn">Ownership übertragen</button>
+                        </div>
+                        <p class="muted" id="transferMsg" style="margin-top:10px;"></p>
+                    </div>
+                </div>
+
+                <h3 style="margin-top:16px;">Mitgliederliste</h3>
+                <div id="membersContainer" class="grid" style="margin-top:12px;"></div>
+                <p class="muted" id="msg" style="margin-top:10px;"></p>
+            </section>
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="container footer-inner">
+            <div class="brand-row">
+                <img src="../images/Logo.png" alt="StudyTasks Logo" class="brand-logo small" />
+            </div>
+            <p class="muted">© <span id="y"></span> StudyTasks</p>
+        </div>
+    </footer>
+
+    <script>
+        document.getElementById("y").textContent = new Date().getFullYear();
+    </script>
+
+    <script src="js/auth-check.js"></script>
+    <script src="js/api.js"></script>
+    <script src="js/groups.js"></script>
+
+    <script>
+        const params = new URLSearchParams(window.location.search);
+        const groupId = params.get("group_id");
+
+        if (!groupId) {
+            alert("group_id fehlt");
+            location.href = "gruppen.html";
+        }
+
+        document.getElementById("toTasksBtn").href = "gruppenaufgaben.html?group_id=" + encodeURIComponent(groupId);
+
+        function escapeHtml(str) {
+            return String(str)
+                .replaceAll("&", "&amp;")
+                .replaceAll("<", "&lt;")
+                .replaceAll(">", "&gt;")
+                .replaceAll('"', "&quot;")
+                .replaceAll("'", "&#039;");
+        }
+
+        function roleLabel(role) {
+            if (role === "ADMIN") return "Owner";
+            if (role === "MEMBER") return "Member";
+            return role;
+        }
+
+        async function getMe() {
+            return apiRequest("/auth/me.php", "GET");
+        }
+
+        function renderMembers(members, meId, myRole) {
+            const container = document.getElementById("membersContainer");
+            container.innerHTML = "";
+
+            members.forEach(m => {
+                        const el = document.createElement("article");
+                        el.className = "feature";
+
+                        const canKick = (myRole === "ADMIN") && (m.role === "MEMBER");
+                        const isMe = String(m.user_id) === String(meId);
+
+                        el.innerHTML = `
+        <div style="display:flex; align-items:center; justify-content:space-between; gap:12px; flex-wrap:wrap;">
+          <div>
+            <h3 style="margin:0 0 6px 0;">${escapeHtml(m.name)}</h3>
+            <p class="muted" style="margin:0;">Rolle: ${escapeHtml(roleLabel(m.role))}${isMe ? " (Du)" : ""}</p>
+          </div>
+          <div style="display:flex; gap:10px; flex-wrap:wrap; align-items:center;">
+            ${canKick ? `<button class="btn" data-kick="${m.user_id}">Remove</button>` : ``}
+          </div>
+        </div>
+      `;
+      container.appendChild(el);
+    });
+
+    // kick handlers
+    container.querySelectorAll("[data-kick]").forEach(btn => {
+      btn.addEventListener("click", async () => {
+        const userId = btn.getAttribute("data-kick");
+        if (!confirm("Mitglied wirklich entfernen?")) return;
+
+        try {
+          await kickMember(groupId, userId);
+          await loadAll();
+        } catch (e) {
+          alert(e.message || "Entfernen nicht möglich");
+        }
+      });
+    });
+  }
+
+  async function loadAll() {
+    const msg = document.getElementById("msg");
+    msg.textContent = "Lade…";
+
+    const me = await getMe();
+    const info = await getGroupInfo(groupId);
+    const members = await loadGroupMembers(groupId);
+
+    // my role
+    const my = members.find(x => String(x.user_id) === String(me.id));
+    const myRole = my ? my.role : null;
+
+    document.getElementById("groupMeta").textContent =
+  "Gruppe: " + (info && info.name ? info.name : ("#" + groupId));
+
+
+    // Admin UI
+    const adminBox = document.getElementById("adminBox");
+    const transferBox = document.getElementById("transferBox");
+    const joinCodeLine = document.getElementById("joinCodeLine");
+
+    if (myRole === "ADMIN") {
+      adminBox.style.display = "block";
+      joinCodeLine.innerHTML = `Join-Code: <b>${escapeHtml(info.join_code || "")}</b>`;
+
+      // Transfer dropdown = alle MEMBERs außer ich
+      const candidates = members.filter(m => m.role === "MEMBER");
+      const sel = document.getElementById("newAdminSelect");
+      sel.innerHTML = candidates.length
+        ? candidates.map(m => `<option value="${m.user_id}">${escapeHtml(m.name)}</option>`).join("")
+        : `<option value="">(keine Members)</option>`;
+
+      // transfer box nur wenn es Kandidaten gibt
+      transferBox.style.display = candidates.length ? "block" : "none";
+    } else {
+      adminBox.style.display = "none";
+    }
+
+    renderMembers(members, me.id, myRole);
+
+    msg.textContent = "";
+    return { me, info, members, myRole };
+  }
+
+  // Leave
+  document.getElementById("leaveBtn").addEventListener("click", async () => {
+    try {
+      const state = await loadAll();
+      const myRole = state.myRole;
+
+      if (myRole === "ADMIN") {
+        // wenn noch andere members existieren -> Backend wird 409 liefern
+        if (!confirm("Du bist Admin. Wenn Mitglieder existieren, musst du Ownership zuerst übertragen. Trotzdem versuchen zu verlassen?")) return;
+      } else {
+        if (!confirm("Gruppe wirklich verlassen?")) return;
+      }
+
+      await leaveGroup(groupId);
+      alert("✅ Gruppe verlassen");
+      location.href = "gruppen.html";
+    } catch (e) {
+      // Erwartet bei Admin + members: 409
+      alert(e.message || "Leave nicht möglich (evtl. Ownership zuerst übertragen).");
+    }
+  });
+
+  // Transfer ownership
+  document.getElementById("transferBtn").addEventListener("click", async () => {
+    const sel = document.getElementById("newAdminSelect");
+    const newId = sel.value;
+    const out = document.getElementById("transferMsg");
+    out.textContent = "Übertrage…";
+
+    try {
+      if (!newId) return;
+      await transferOwnership(groupId, newId);
+      out.textContent = "✅ Ownership übertragen. Du bist jetzt MEMBER.";
+      await loadAll();
+    } catch (e) {
+      out.textContent = e.message || "Transfer fehlgeschlagen.";
+    }
+  });
+
+  (async () => {
+    await loadAll();
+  })();
+    </script>
+    <script src="js/admin-nav.js"></script>
+
+</body>
+
+</html>

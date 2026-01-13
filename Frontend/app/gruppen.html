@@ -5,9 +5,8 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Gruppen – StudyTasks</title>
-    <meta name="description" content="Verwalte deine Studiengruppen in StudyTasks – Teammitglieder, Aufgabenfortschritt und gemeinsame Projekte im Überblick." />
+    <meta name="description" content="Verwalte deine Studiengruppen in StudyTasks." />
 
-    <!-- Schrift & Styles -->
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../src/styles.css" />
@@ -15,112 +14,191 @@
 </head>
 
 <body>
-<header class="site-header">
-    <div class="container header-inner">
-        <a class="brand" href="dashboard.html">
-            <img src="../images/Logo.png" alt="StudyTasks Logo" class="brand-logo" />
-        </a>
 
-        <nav class="nav">
-            <ul class="nav-list">
-                <li><a href="dashboard.html">Dashboard</a></li>
-                <li><a href="aufgaben.html">Aufgaben</a></li>
-                <li><a href="kalender.html">Kalender</a></li>
-                <li><a href="gruppen.html" class="active">Gruppen</a></li>
-                <li><a href="profil.html">Profil</a></li>
-                <li><a href="logout.html">Logout</a></li>
-            </ul>
-        </nav>
-    </div>
-</header>
+    <header class="site-header">
+        <div class="container header-inner">
+            <a class="brand" href="dashboard.html">
+                <img src="../images/Logo.png" alt="StudyTasks Logo" class="brand-logo" />
+            </a>
 
-<main class="section">
-    <div class="container groups-page-container">
-        <h1 class="page-title">Meine Gruppen</h1>
-        <p class="muted page-subtitle">
-            Behalte den Überblick über deine Studiengruppen, Teammitglieder und gemeinsamen Fortschritt.
-        </p>
-
-        <!-- Gruppenliste -->
-        <div class="grid groups-grid">
-            <!-- Gruppe 1 -->
-            <article class="feature group-card">
-                <h2>💻 Software Engineering – Projektgruppe</h2>
-                <p class="muted">Projekt: „StudyTasks App UI“</p>
-
-                <div class="group-members">
-                    <h3>👥 Mitglieder</h3>
-                    <ul>
-                        <li>Ersan Kavak (Teamleitung)</li>
-                        <li>Maria Huber</li>
-                        <li>Lukas Steiner</li>
-                        <li>Jasmin Berger</li>
-                    </ul>
-                </div>
-
-                <div class="group-progress">
-                    <h3>📊 Fortschritt</h3>
-                    <div class="progress group-progress-bar">
-                        <span style="width: 72%;"></span>
-                    </div>
-                    <p class="muted group-progress-text">72% erledigt</p>
-                </div>
-
-                <div class="group-actions">
-                    <button class="btn btn-primary" disabled>Gruppenaufgaben anzeigen</button>
-                    <button class="btn btn-ghost" disabled>Mitglieder verwalten</button>
-                </div>
-            </article>
-
-            <!-- Gruppe 2 -->
-            <article class="feature group-card">
-                <h2>🧮 Mathematik Lerngruppe</h2>
-                <p class="muted">Wöchentliche Vorbereitung auf Übungsblätter</p>
-
-                <div class="group-members">
-                    <h3>👥 Mitglieder</h3>
-                    <ul>
-                        <li>Serdar Toluay</li>
-                        <li>Ersan Kavak</li>
-                        <li>Ömer Ündemir</li>
-                    </ul>
-                </div>
-
-                <div class="group-progress">
-                    <h3>📊 Fortschritt</h3>
-                    <div class="progress group-progress-bar">
-                        <span style="width: 54%;"></span>
-                    </div>
-                    <p class="muted group-progress-text">54% erledigt</p>
-                </div>
-
-                <div class="group-actions">
-                    <button class="btn btn-primary" disabled>Gruppenaufgaben anzeigen</button>
-                    <button class="btn btn-ghost" disabled>Gruppe verlassen</button>
-                </div>
-            </article>
+            <nav class="nav">
+                <ul class="nav-list">
+                    <li><a href="dashboard.html">Dashboard</a></li>
+                    <li><a href="aufgaben.html">Aufgaben</a></li>
+                    <li><a href="kalender.html">Kalender</a></li>
+                    <li><a href="gruppen.html" class="active">Gruppen</a></li>
+                    <li><a href="profil.html">Profil</a></li>
+                    <li><a href="logout.html">Logout</a></li>
+                </ul>
+            </nav>
         </div>
+    </header>
 
-        <div class="page-center-cta">
-            <button class="btn btn-primary" disabled>+ Neue Gruppe erstellen</button>
+    <main class="section">
+        <div class="container">
+            <h1 class="page-title">Gruppen</h1>
+            <p class="muted page-subtitle">Erstelle eine Gruppe oder trete per Code bei.</p>
+
+            <!-- Aktionen -->
+            <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap:16px; margin-top:22px;">
+                <section class="feature">
+                    <h3 style="margin-top:0;">Gruppe erstellen</h3>
+                    <p class="muted">Du wirst automatisch <b>Owner (ADMIN)</b> und bekommst einen Join-Code.</p>
+
+                    <form id="createForm" style="display:grid; gap:10px; margin-top:10px;">
+                        <input id="createName" placeholder="Gruppenname" required />
+                        <textarea id="createDesc" placeholder="Beschreibung (optional)"></textarea>
+                        <button class="btn btn-primary" type="submit">Erstellen</button>
+                    </form>
+
+                    <div id="createResult" class="muted" style="margin-top:10px;"></div>
+                </section>
+
+                <section class="feature">
+                    <h3 style="margin-top:0;">Gruppe beitreten</h3>
+                    <p class="muted">Gib einen gültigen Join-Code ein.</p>
+
+                    <form id="joinForm" style="display:grid; gap:10px; margin-top:10px;">
+                        <input id="joinCode" placeholder="Join-Code (z.B. AB12CD34)" required />
+                        <button class="btn btn-primary" type="submit">Beitreten</button>
+                    </form>
+
+                    <div id="joinResult" class="muted" style="margin-top:10px;"></div>
+                </section>
+            </div>
+
+            <!-- Meine Gruppen -->
+            <h2 style="margin-top:28px;">Meine Gruppen</h2>
+            <div id="groupsContainer" class="grid" style="margin-top:14px;"></div>
         </div>
-    </div>
-</main>
+    </main>
 
-<footer class="site-footer">
-    <div class="container footer-inner">
-        <div class="brand-row">
-            <img src="../images/Logo.png" alt="StudyTasks Logo" class="brand-logo small" />
+    <footer class="site-footer">
+        <div class="container footer-inner">
+            <div class="brand-row">
+                <img src="../images/Logo.png" alt="StudyTasks Logo" class="brand-logo small" />
+            </div>
+            <p class="muted">© <span id="y"></span> StudyTasks</p>
         </div>
-        <p class="muted">
-            © <span id="y"></span> StudyTasks. FH-freundlich, einfach, fokussiert.
-        </p>
-    </div>
-</footer>
+    </footer>
 
-<script>
-    document.getElementById("y").textContent = new Date().getFullYear();
-</script>
+    <script>
+        document.getElementById("y").textContent = new Date().getFullYear();
+    </script>
+
+    <script src="js/auth-check.js"></script>
+    <script src="js/api.js"></script>
+    <script src="js/groups.js"></script>
+
+    <script>
+        function escapeHtml(str) {
+            return String(str)
+                .replace(/&/g, "&amp;")
+                .replace(/</g, "&lt;")
+                .replace(/>/g, "&gt;")
+                .replace(/"/g, "&quot;")
+                .replace(/'/g, "&#039;");
+        }
+
+
+        async function renderMyGroups() {
+            const container = document.getElementById("groupsContainer");
+            container.innerHTML = "";
+
+            const groups = await loadMyGroups();
+
+            if (!groups || groups.length === 0) {
+                container.innerHTML = "<p class='muted'>Du bist in keiner Gruppe.</p>";
+                return;
+            }
+
+            groups.forEach(g => {
+                        const el = document.createElement("article");
+                        el.className = "feature";
+                        const isAdmin = (g.role === "ADMIN");
+                        el.innerHTML = `
+      <h3 style="margin-top:0;">${escapeHtml(g.name)}</h3>
+      <div style="display:flex; gap:10px; flex-wrap:wrap; margin-top:10px;">
+          <a class="btn btn-primary" href="gruppenaufgaben.html?group_id=${encodeURIComponent(g.id)}">Aufgaben</a>
+          <a class="btn" href="gruppen-mitglieder.html?group_id=${encodeURIComponent(g.id)}">Mitglieder</a>
+          ${isAdmin ? `<button class="btn" data-del="${g.id}">Löschen</button>` : ``}
+      </div>`;
+      container.appendChild(el);
+    });
+
+        // Nach dem Rendern: Delete-Buttons binden
+    container.querySelectorAll("[data-del]").forEach(btn => {
+    btn.addEventListener("click", async () => {
+        const gid = btn.getAttribute("data-del");
+        if (!confirm("Gruppe wirklich löschen? Alle Aufgaben und Mitglieder werden entfernt.")) return;
+
+        try {
+        await deleteGroup(gid);
+        alert("✅ Gruppe gelöscht");
+        await renderMyGroups();
+        } catch (e) {
+        alert(e.message || "Löschen fehlgeschlagen");
+        }
+    });
+    });
+  }
+
+  // Create group
+  document.getElementById("createForm").addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const out = document.getElementById("createResult");
+    out.textContent = "Erstelle Gruppe…";
+
+    try {
+      const name = document.getElementById("createName").value.trim();
+      const description = document.getElementById("createDesc").value.trim();
+
+const res = await createGroup(name, description);
+
+if (!res || !res.join_code || !res.group_id) {
+  throw new Error(
+    "Gruppe wurde erstellt, aber Server-Antwort ist ungültig."
+  );
+}
+
+out.innerHTML = `
+  ✅ Gruppe erstellt. Join-Code: <b>${escapeHtml(res.join_code)}</b>
+  <div style="margin-top:8px;">
+    <a class="btn btn-primary" href="gruppen-mitglieder.html?group_id=${encodeURIComponent(res.group_id)}">
+      Mitglieder öffnen
+    </a>
+  </div>
+`;
+
+
+      await renderMyGroups();
+    } catch (err) {
+      out.textContent = err.message || "Fehler beim Erstellen.";
+    }
+  });
+
+  // Join group
+  document.getElementById("joinForm").addEventListener("submit", async (e) => {
+    e.preventDefault();
+    const out = document.getElementById("joinResult");
+    out.textContent = "Trete Gruppe bei…";
+
+    try {
+      const code = document.getElementById("joinCode").value.trim().toUpperCase();
+      await joinGroup(code);
+      out.textContent = "✅ Beigetreten.";
+      await renderMyGroups();
+    } catch (err) {
+      out.textContent = err.message || "Beitritt fehlgeschlagen.";
+    }
+  });
+
+  (async () => {
+    await renderMyGroups();
+  })();
+    </script>
+    <script src="js/admin-nav.js"></script>
+
 </body>
 
 </html>

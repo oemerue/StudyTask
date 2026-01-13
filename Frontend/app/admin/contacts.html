@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="de">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Kontaktanfragen – Admin</title>
+
+    <link rel="stylesheet" href="../../src/styles.css" />
+</head>
+
+<body>
+
+    <header class="site-header">
+        <div class="container header-inner">
+            <a class="brand" href="dashboard.html">
+                <img src="../../images/Logo.png" alt="StudyTasks Logo" class="brand-logo" />
+            </a>
+
+            <nav class="nav">
+                <ul class="nav-list">
+                    <li><a href="dashboard.html">Admin</a></li>
+                    <li><a href="users.html">User</a></li>
+                    <li><a href="contacts.html" class="active">Kontakt</a></li>
+                    <li><a href="../logout.html">Logout</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="section">
+        <div class="container">
+            <h1>Kontaktanfragen</h1>
+
+            <div class="table-wrapper">
+                <table class="table admin-table">
+                    <thead>
+                        <tr>
+                            <th>Datum</th>
+                            <th>Name</th>
+                            <th>E-Mail</th>
+                            <th>Nachricht</th>
+                        </tr>
+                    </thead>
+                    <tbody id="contactTable"></tbody>
+                </table>
+            </div>
+        </div>
+    </main>
+
+    <!-- Login- & API-Handling -->
+    <script src="../js/auth-check.js"></script>
+    <script src="../js/api.js"></script>
+
+    <script>
+        async function loadContacts() {
+            const msgs = await apiRequest("/admin/contacts.php");
+            const tbody = document.getElementById("contactTable");
+            tbody.innerHTML = "";
+
+            msgs.forEach(m => {
+                const tr = document.createElement("tr");
+                tr.innerHTML = `
+            <td>${m.created_at}</td>
+            <td>${m.name}</td>
+            <td>${m.email}</td>
+            <td>
+                <div class="message-cell">
+                    ${m.message}
+                </div>
+            </td>
+        `;
+                tbody.appendChild(tr);
+            });
+        }
+
+        loadContacts();
+    </script>
+
+</body>
+
+</html>
