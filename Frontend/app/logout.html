@@ -4,38 +4,32 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Abmeldung – StudyTasks</title>
-    <meta name="description"
-          content="Du wurdest erfolgreich von StudyTasks abgemeldet und wirst automatisch weitergeleitet." />
-
-    <!-- Schrift & Styles -->
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link
-        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap"
-        rel="stylesheet">
+    <title>Logout – StudyTasks</title>
     <link rel="stylesheet" href="../src/styles.css" />
-    <link rel="icon" href="../images/Logo.png" />
 </head>
 
 <body>
-    <main class="section logout-main">
-        <div class="container demo-card logout-card">
-            <img src="../images/Logo.png" alt="StudyTasks Logo" class="logout-logo" />
-            <h2>Du wurdest erfolgreich abgemeldet</h2>
-            <p class="muted mt-10">
-                Du wirst in Kürze automatisch zur Login-Seite weitergeleitet.
-            </p>
-            <p class="muted">
-                Wenn die Weiterleitung nicht funktioniert, klicke bitte unten:
-            </p>
-            <a href="../site/login.html" class="btn btn-primary logout-link">
-                Zum Login
-            </a>
+
+    <main class="section">
+        <div class="container demo-card" style="max-width:520px; text-align:center;">
+            <h2>Logout…</h2>
+            <p class="muted">Du wirst abgemeldet.</p>
         </div>
     </main>
 
-    <!-- WICHTIG: Externes Logout-JS einbinden -->
-    <script src="../js/logout.js"></script>
+    <script src="js/api.js"></script>
+    <script>
+        (async() => {
+            try {
+                await apiRequest("/auth/logout.php", "POST");
+            } catch (e) {
+                // egal, Session ist serverseitig sowieso weg
+                console.error(e);
+            }
+            window.location.href = "../site/login.html";
+        })();
+    </script>
+
 </body>
 
 </html>

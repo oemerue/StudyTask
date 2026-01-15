@@ -4,10 +4,9 @@
 <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <title>Neue Gruppe erstellen – StudyTasks</title>
-    <meta name="description" content="Erstelle eine neue Studiengruppe in StudyTasks, lade Mitglieder ein und verwalte gemeinsame Aufgaben." />
+    <title>Gruppe erstellen – StudyTasks</title>
+    <meta name="description" content="Erstelle eine neue Studiengruppe in StudyTasks." />
 
-    <!-- Schrift & Styles -->
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="../src/styles.css" />
@@ -15,7 +14,7 @@
 </head>
 
 <body>
-    <!-- Header -->
+
     <header class="site-header">
         <div class="container header-inner">
             <a class="brand" href="dashboard.html">
@@ -35,49 +34,71 @@
         </div>
     </header>
 
-    <!-- Hauptinhalt -->
-    <main class="section" style="display:flex; justify-content:center; align-items:center; min-height:80vh;">
-        <div class="container demo-card" style="max-width:650px;">
-            <h2 style="text-align:center;">Neue Gruppe erstellen</h2>
-            <p class="muted" style="text-align:center;">
-                Füge eine neue Studiengruppe hinzu. Du kannst den Gruppennamen, eine Beschreibung und Mitglieder angeben.
+    <main class="section">
+        <div class="container demo-card" style="max-width:700px;">
+            <h2>Neue Gruppe erstellen</h2>
+            <p class="muted">
+                Erstelle eine neue Studiengruppe und lade andere Studierende ein.
             </p>
 
-            <form id="createGroupForm" style="display:flex; flex-direction:column; gap:16px; margin-top:20px;">
-                <!-- Gruppenname -->
-                <label for="groupName">Name der Gruppe</label>
-                <input type="text" id="groupName" placeholder="z. B. Software Engineering – Projektgruppe" style="padding:10px; border:1px solid #ccc; border-radius:10px; font-size:15px;" required />
+            <form id="groupForm" style="margin-top:24px; display:flex; flex-direction:column; gap:16px;">
+                <label for="groupName">Gruppenname</label>
+                <input type="text" id="groupName" placeholder="z. B. Software Engineering Gruppe" />
 
-                <!-- Beschreibung -->
                 <label for="groupDesc">Beschreibung</label>
-                <textarea id="groupDesc" rows="4" placeholder="Kurze Beschreibung der Gruppe ..." style="padding:10px; border:1px solid #ccc; border-radius:10px; font-size:15px;"></textarea>
+                <textarea id="groupDesc" rows="4" placeholder="Kurze Beschreibung der Gruppe"></textarea>
 
-                <!-- Mitglieder -->
-                <label for="groupMembers">Mitglieder (E-Mail oder Benutzername, durch Komma getrennt)</label>
-                <textarea id="groupMembers" rows="3" placeholder="z. B. maria.huber@technikum-wien.at, lukas.steiner@technikum-wien.at" style="padding:10px; border:1px solid #ccc; border-radius:10px; font-size:15px;"></textarea>
-
-                <!-- Buttons -->
                 <div style="display:flex; justify-content:space-between; margin-top:10px;">
-                    <a href="gruppen.html" class="btn btn-secondary">Abbrechen</a>
+                    <a href="gruppen.html" class="btn btn-ghost">Abbrechen</a>
                     <button type="submit" class="btn btn-primary">Gruppe erstellen</button>
                 </div>
             </form>
         </div>
     </main>
 
-    <!-- Footer -->
     <footer class="site-footer">
         <div class="container footer-inner">
             <div class="brand-row">
                 <img src="../images/Logo.png" alt="StudyTasks Logo" class="brand-logo small" />
             </div>
-            <p class="muted">© <span id="y"></span> StudyTasks. FH-freundlich, einfach, fokussiert.</p>
+            <p class="muted">© <span id="y"></span> StudyTasks</p>
         </div>
     </footer>
 
-    <!-- Scripts -->
-    <script src="../src/app.js"></script>
-    <script src="js/gruppe-erstellen.js"></script>
+    <script>
+        document.getElementById("y").textContent = new Date().getFullYear();
+    </script>
+
+    <!-- AUTH CHECK -->
+    <script src="js/auth-check.js"></script>
+    <script src="js/api.js"></script>
+    <script src="js/groups.js"></script>
+
+    <script>
+        document.getElementById('groupForm').addEventListener('submit', async e => {
+            e.preventDefault();
+
+            const name = document.getElementById('groupName').value.trim();
+            const description = document.getElementById('groupDesc').value.trim();
+
+            if (!name) {
+                alert('Name erforderlich');
+                return;
+            }
+
+            try {
+
+                await createGroup(name, description);
+                window.location.href = 'gruppen.html';
+            } catch (e) {
+                alert(e.message);
+                console.error(e);
+            }
+
+        });
+    </script>
+    <script src="js/admin-nav.js"></script>
+
 </body>
 
 </html>
