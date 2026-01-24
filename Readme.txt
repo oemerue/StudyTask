@@ -14,7 +14,7 @@ The application allows users to:
 - analyze progress using basic statistics,
 - and manage users and contact messages via an admin interface.
 
-In addition to the functional implementation, strong emphasis was placed on documentation, reproducibility, and a structured development process.
+In addition to functional implementation, strong emphasis was placed on documentation, reproducibility, and a structured development process.
 
 
 2. Source Code & Project Access (GitHub)
@@ -24,49 +24,47 @@ The complete project source code is available in the following GitHub repository
 https://github.com/oemerue/StudyTask
 
 The repository contains:
-- the full frontend and backend source code,
+- the complete frontend and backend source code,
 - all documentation required for setup, usage, and evaluation,
 - and the database dump required to run the application locally.
 
-All documents referenced in this README can be found directly within the project repository, primarily in the `docs` directory.
+All documents referenced in this README are located within the project repository, primarily in the `docs` directory.
 
 
 3. Design & Prototyping (Figma)
 
-At the beginning of the project, a visual prototype of the application was created using Figma.  
+At the beginning of the project, a visual prototype of the application was created using Figma.
 The prototype was used to define the layout, navigation structure, and core user flows before starting the technical implementation.
 
-The Figma prototype served as a design reference throughout development and helped align frontend structure and user experience early in the project.
+The Figma prototype served as a design reference throughout development and supported early alignment of frontend structure and user experience.
 
-The prototype can be accessed via the following link:
+Figma prototype link:
 https://www.figma.com/design/xNRuJ4pEoI9QU0NSKNwm2C/Untitled?node-id=0-1&t=mxnw7tOVuRfGNiSm-1
 
 
 4. Project / Repository Structure
 
-The repository is structured as follows:
+The project repository is structured as follows:
 
 StudyTask/
-- Backend/        PHP backend (API endpoints, authentication, database access)
-- Frontend/       HTML, CSS and JavaScript frontend
-- docs/           Complete project documentation
-  - database/     SQL dump for database setup
-  - Setup & Installation Guide
-  - User Manual
-  - Technical Documentation
-  - Process / PM Documentation
-  - Evidence for grading criteria
-  - Reflection
-  - Personal Contribution
-  - Personal Development
-- index.html      Entry point of the application
+- Backend/            PHP backend (API endpoints, authentication, database access)
+- Frontend/           HTML, CSS and JavaScript frontend
+- docs/               Complete project documentation
+  - database/         SQL database dump
+  - StudyTask_Setup_Guide.pdf
+  - StudyTask_Technical_Documentation.pdf
+  - StudyTask_User_Manual.pdf
+  - StudyTasks_Process_Documentation.pdf
+- index.html          Entry point of the application
 
-All documents required for understanding, running, and evaluating the project are located inside the `docs` folder of the repository.
+All required documents for understanding, running, and evaluating the project are located inside the `docs` folder.
 
 
 5. Getting Started (Local Setup)
 
-To run the project locally, please refer to the “Installation & Setup Guide” located in the `docs` folder of the GitHub repository.
+To run the project locally, please refer to the Installation & Setup Guide located at:
+
+docs/StudyTask_Setup_Guide.pdf
 
 The setup guide explains step by step:
 - required software (XAMPP, Apache, MySQL),
@@ -82,33 +80,39 @@ http://localhost/StudyTask
 
 6. Documentation Overview
 
-All documentation required for the evaluation of the project is located in the `docs` directory of the repository.
+All documentation required for the evaluation of the project is located in:
 
-The documentation includes:
+C:\xampp\htdocs\StudyTask\docs\
 
-- Installation & Setup Guide  
-  Instructions on how to install and run the application locally, including database initialization.
+The documentation is structured as follows:
 
-- User Manual  
-  Description of the application from an end-user perspective, including group management, task handling, calendar view, statistics, and admin functionality.
+6.1 Installation & Setup Guide  
+File: StudyTask_Setup_Guide.pdf  
+Describes how to install and run the application locally, including database setup and startup instructions.
 
-- Technical Documentation  
-  High-level overview of the system architecture, technologies used, authentication and authorization concepts, and database design.
+6.2 User Manual  
+File: StudyTask_User_Manual.pdf  
+Explains how to use the application from an end-user perspective, including registration, login, group management, task handling, calendar view, statistics, and admin functionality.
 
-- Process / Project Management Documentation  
-  Documentation of the development process, including process model, backlog and task management, sprint and milestone reviews, time tracking, and quality assurance.
+6.3 Technical Documentation  
+File: StudyTask_Technical_Documentation.pdf  
+Provides a high-level overview of the system architecture, technologies used, authentication and authorization concepts, and the database model.
 
-- Evidence for Grading Criteria  
-  Direct mapping of grading criteria to concrete project artifacts and documentation sections.
+6.4 Process, PM, Evidence, Reflection and Personal Sections (Single Document)
 
-- Reflection  
-  Structured reflection on challenges, lessons learned, and possible improvements.
+The following required grading components are combined into a single document:
 
-- Personal Contribution  
-  Clear description of individual responsibilities and contributions within the project team.
+- Project Management documentation (time tracking, sprint reviews, backlog, task management)
+- Evidence for all grading criteria
+- Reflection
+- Personal Contribution
+- Personal Development
 
-- Personal Development  
-  Overview of personal learning outcomes and skills gained during the project.
+All of these elements are documented in the following file:
+
+C:\xampp\htdocs\StudyTask\docs\StudyTasks_Process_Documentation.pdf
+
+This document provides a complete overview of the development process, project organization, evaluation evidence, individual contributions, and learning outcomes.
 
 
 7. Database Dump
@@ -134,8 +138,8 @@ These credentials are intended for evaluation only.
 
 The project is designed to be evaluated using:
 - the GitHub repository (source code),
-- the provided SQL database dump,
+- the SQL database dump,
 - and the documentation located in the `docs` folder.
 
-All grading criteria communicated during the course are fully addressed through the submitted materials.  
+All grading criteria communicated during the course are fully addressed through the submitted materials.
 The application is locally runnable, reproducible, and documented in a way that allows evaluation without additional explanation.
