@@ -55,6 +55,7 @@ StudyTask/
   - StudyTask_Technical_Documentation.pdf
   - StudyTask_User_Manual.pdf
   - StudyTasks_Process_Documentation.pdf
+  - Studytask Project Plan.pdf
 - index.html          Entry point of the application
 
 All required documents for understanding, running, and evaluating the project are located inside the `docs` folder.
@@ -98,7 +99,7 @@ Explains how to use the application from an end-user perspective, including regi
 File: StudyTask_Technical_Documentation.pdf  
 Provides a high-level overview of the system architecture, technologies used, authentication and authorization concepts, and the database model.
 
-6.4 Process, PM, Evidence, Reflection and Personal Sections (Single Document)
+6.4 Process, PM, Evidence, Reflection and Personal Sections (StudyTasks_Process_Documentation)
 
 The following required grading components are combined into a single document:
 
@@ -107,6 +108,10 @@ The following required grading components are combined into a single document:
 - Reflection
 - Personal Contribution
 - Personal Development
+
+6.5 Here is the link to Trello, where you can see which tasks have been created for our project.
+You can also see who has invested how much time in each individual task! You need an account on Trello to view our board.
+The link for Trello is as follows: https://trello.com/invite/b/695a822319cc6d8fe62941b7/ATTI102a9222b6e4ce6d4dc5e7ddf9d4d467A34AFE9C/studytasksorginal
 
 All of these elements are documented in the following file:
 
